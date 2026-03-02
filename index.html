@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light" data-lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lucas Zhuang — Product Manager · AI Architect</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+/* ===========================================
+   THEME VARIABLES — Light & Dark
+   =========================================== */
+:root,[data-theme="light"]{
+  --bg:#faf9f5;
+  --bg-dark:#141413;
+  --bg-card:rgba(20,20,19,0.02);
+  --text:#141413;
+  --text-light:#6b6963;
+  --text-ghost:#b0aea5;
+  --border:rgba(20,20,19,0.1);
+  --border-light:rgba(20,20,19,0.06);
+  --gold:#FFBC0D;
+  --gold-dim:rgba(255,188,13,0.15);
+  --gold-ghost:rgba(255,188,13,0.06);
+  --accent-blue:#6a9bcc;
+  --accent-green:#788c5d;
+  --hero-watermark:rgba(255,188,13,0.07);
+  --hero-meta:rgba(250,249,245,0.3);
+  --font-display:'Poppins',Arial,sans-serif;
+  --font-body:'Lora',Georgia,serif;
+}
+[data-theme="dark"]{
+  --bg:#0e0e0e;
+  --bg-dark:#faf9f5;
+  --bg-card:rgba(255,255,255,0.03);
+  --text:#e8e6dc;
+  --text-light:#8a8880;
+  --text-ghost:#4a4840;
+  --border:rgba(255,255,255,0.08);
+  --border-light:rgba(255,255,255,0.04);
+  --hero-watermark:rgba(255,188,13,0.05);
+  --hero-meta:rgba(20,20,19,0.4);
+}
+
+/* ===========================================
+   BASE
+   =========================================== */
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text);overflow-x:hidden;transition:background 0.5s,color 0.5s}
+::selection{background:var(--gold);color:#141413}
+
+/* ===========================================
+   LOADING SCREEN
+   =========================================== */
+.loader{position:fixed;top:0;left:0;width:100%;height:100%;background:#141413;z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;transition:opacity 0.6s,visibility 0.6s}
+.loader.hidden{opacity:0;visibility:hidden;pointer-events:none}
+.loader-text{font-family:var(--font-display);font-size:clamp(1.5rem,3vw,2.5rem);color:#faf9f5;font-weight:700;opacity:0;animation:loaderFadeIn 0.6s 0.2s forwards}
+.loader-text em{color:var(--gold);font-style:italic}
+.loader-bar{width:clamp(120px,20vw,200px);height:2px;background:rgba(255,255,255,0.1);margin-top:1.5rem;border-radius:1px;overflow:hidden;opacity:0;animation:loaderFadeIn 0.4s 0.4s forwards}
+.loader-bar-inner{width:0;height:100%;background:var(--gold);animation:loaderProgress 1.2s 0.5s cubic-bezier(0.16,1,0.3,1) forwards}
+@keyframes loaderFadeIn{to{opacity:1}}
+@keyframes loaderProgress{to{width:100%}}
+
+/* ===========================================
+   TOP BAR — Theme + Lang toggle
+   ====================================== */
+.top-bar{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:flex-end;align-items:center;gap:0.8rem;padding:clamp(0.8rem,1.5vh,1.2rem) clamp(1.5rem,3vw,3rem);background:transparent;transition:background 0.3s}
+.top-bar.scrolled{background:rgba(250,249,245,0.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+[data-theme="dark"] .top-bar.scrolled{background:rgba(14,14,14,0.85)}
+.toggle-btn{font-family:var(--font-display);font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;background:none;border:1.5px solid var(--border);color:var(--text);padding:0.4em 1em;cursor:pointer;transition:all 0.3s;border-radius:0}
+.toggle-btn:hover{border-color:var(--gold);color:var(--gold)}
+
+/* ===========================================
+   HERO — Compact split
+   =========================================== */
+.hero{min-height:auto;display:grid;grid-template-columns:55% 45%;position:relative}
+.hero-left{
+  background:var(--bg-dark);color:var(--bg);
+  display:flex;flex-direction:column;justify-content:center;
+  padding:clamp(2.5rem,4vw,5rem) clamp(3rem,6vw,8rem);
+  position:relative;overflow:hidden;
+}
+[data-theme="dark"] .hero-left{background:#faf9f5;color:#141413}
+.hero-left::before{
+  content:'LUCAS';position:absolute;
+  top:clamp(1rem,3vh,3rem);left:clamp(2rem,4vw,5rem);
+  font-family:var(--font-display);font-size:clamp(5rem,12vw,10rem);
+  color:var(--hero-watermark);line-height:0.85;
+  pointer-events:none;font-style:italic;
+}
+.hero h1{font-family:var(--font-display);font-weight:700;font-size:clamp(2.5rem,5vw,4.5rem);line-height:0.92;margin-bottom:clamp(1rem,2vh,2rem)}
+.hero h1 em{font-style:italic;color:var(--gold)}
+[data-theme="dark"] .hero h1 em{color:var(--gold)}
+.hero-meta{font-size:clamp(0.6rem,0.75vw,0.7rem);letter-spacing:0.2em;text-transform:uppercase;color:var(--hero-meta);line-height:2.2}
+[data-theme="dark"] .hero-meta{color:rgba(20,20,19,0.4)}
+
+.hero-right{display:flex;flex-direction:column;justify-content:center;padding:clamp(2.5rem,4vw,5rem) clamp(3rem,6vw,8rem);position:relative}
+.hero-right::after{content:'';position:absolute;bottom:0;right:0;width:clamp(80px,10vw,130px);height:clamp(80px,10vw,130px);background:var(--gold);clip-path:polygon(100% 0,100% 100%,0 100%)}
+.hero-right h2{font-family:var(--font-display);font-weight:400;font-size:clamp(1.5rem,2.5vw,2.2rem);font-style:italic;line-height:1.4;margin-bottom:1.5rem}
+.hero-right p{font-size:clamp(0.7rem,0.85vw,0.8rem);color:var(--text-light);line-height:2;max-width:400px}
+.hero-nav{display:flex;gap:1rem;margin-top:2rem}
+.hero-nav a{font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;text-decoration:none;color:var(--text);padding:0.6em 1.5em;border:1.5px solid var(--text);transition:all 0.3s}
+.hero-nav a:hover{background:var(--bg-dark);color:var(--bg);border-color:var(--bg-dark)}
+.hero-nav a.primary{background:var(--bg-dark);color:var(--bg);border-color:var(--bg-dark)}
+.hero-nav a.primary:hover{background:var(--gold);color:#141413;border-color:var(--gold)}
+[data-theme="dark"] .hero-nav a{color:var(--text);border-color:var(--text)}
+[data-theme="dark"] .hero-nav a.primary{background:var(--gold);color:#141413;border-color:var(--gold)}
+
+/* ===========================================
+   SECTIONS
+   =========================================== */
+.section{padding:clamp(5rem,10vh,10rem) clamp(3rem,6vw,8rem);position:relative}
+.section-header{display:flex;align-items:baseline;gap:clamp(1rem,2vw,2rem);margin-bottom:clamp(3rem,5vh,5rem);border-bottom:2px solid var(--text);padding-bottom:1rem}
+.section-header .num{font-family:var(--font-display);font-size:clamp(3rem,5vw,4rem);font-style:italic;color:var(--gold)}
+.section-header h2{font-family:var(--font-display);font-size:clamp(1.5rem,2.5vw,2rem);font-weight:600}
+
+/* Parallax wrapper */
+.parallax-section{will-change:transform}
+
+/* ===========================================
+   BENTO SKILLS
+   =========================================== */
+.bento{display:grid;grid-template-columns:1.4fr 0.6fr;grid-template-rows:auto auto;gap:0;border:2px solid var(--text)}
+.bento-card{padding:clamp(1.5rem,3vw,3rem);border-right:1px solid var(--border);border-bottom:1px solid var(--border);position:relative;overflow:hidden;transition:background 0.4s,transform 0.3s}
+.bento-card:nth-child(1){grid-row:span 2;border-bottom:none}
+.bento-card:nth-child(3){border-bottom:none}
+.bento-card:nth-child(2),.bento-card:nth-child(3){border-right:none}
+.bento-card:hover{background:var(--gold-ghost);transform:scale(1.01)}
+.bento-card .idx{font-family:var(--font-display);font-size:clamp(3rem,5vw,4.5rem);color:var(--gold-dim);font-style:italic;margin-bottom:0.5rem}
+.bento-card h3{font-family:var(--font-display);font-size:clamp(1.3rem,2vw,1.8rem);font-weight:600;margin-bottom:0.8rem}
+.bento-card p{font-size:clamp(0.65rem,0.8vw,0.75rem);color:var(--text-light);line-height:1.9}
+.bento-card .pill{display:inline-block;font-size:0.5rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--bg);padding:0.3em 0.8em;margin-top:1rem}
+.bento-card:nth-child(1) .pill{background:var(--gold)}
+.bento-card:nth-child(2) .pill{background:var(--accent-blue)}
+.bento-card:nth-child(3) .pill{background:var(--accent-green)}
+.bento-card:first-child h3{font-size:clamp(1.6rem,2.5vw,2.2rem);margin-bottom:1rem}
+.bento-card:first-child p{font-size:clamp(0.7rem,0.9vw,0.85rem);max-width:400px}
+
+/* ===========================================
+   WORKS
+   =========================================== */
+.works-editorial{max-width:100%}
+.work-row{display:grid;grid-template-columns:80px 1fr 120px;align-items:baseline;padding:clamp(1.2rem,2vh,2rem) 0;border-bottom:1px solid var(--border);transition:all 0.3s;cursor:default}
+.work-row:first-child{border-top:1px solid var(--border)}
+.work-row:hover{padding-left:1.5rem;background:var(--gold-ghost)}
+.work-row .yr{font-family:var(--font-display);font-size:clamp(1.2rem,1.8vw,1.5rem);font-style:italic;color:var(--gold)}
+.work-row h3{font-family:var(--font-display);font-size:clamp(1.1rem,1.8vw,1.5rem);font-weight:400}
+.work-row .cat{font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-ghost);text-align:right}
+
+/* ===========================================
+   ABOUT
+   =========================================== */
+.about-split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(3rem,6vw,6rem);margin-top:2rem}
+.about-quote{font-family:var(--font-display);font-style:italic;font-size:clamp(1.3rem,2vw,1.8rem);line-height:1.5;border-left:3px solid var(--gold);padding-left:clamp(1rem,2vw,2rem);color:var(--text)}
+.about-text p{font-size:clamp(0.7rem,0.85vw,0.8rem);color:var(--text-light);line-height:2;margin-bottom:1rem}
+
+/* ===========================================
+   CONTACT
+   =========================================== */
+.contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:2px solid var(--text);margin-top:3rem}
+.contact-cell{padding:clamp(1.5rem,3vw,2.5rem);border-right:1px solid var(--border);transition:background 0.3s,color 0.3s}
+.contact-cell:last-child{border-right:none}
+.contact-cell:hover{background:var(--bg-dark);color:var(--bg)}
+[data-theme="dark"] .contact-cell:hover{background:#faf9f5;color:#141413}
+.contact-cell:hover .c-label{color:var(--gold)}
+.contact-cell:hover .c-value{color:inherit}
+.contact-cell .c-label{font-size:0.55rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--text-ghost);margin-bottom:0.8rem;transition:color 0.3s}
+.contact-cell .c-value{font-family:var(--font-display);font-size:clamp(1rem,1.5vw,1.3rem);font-style:italic;transition:color 0.3s}
+.contact-cell .c-value a{color:inherit;text-decoration:none}
+
+/* ===========================================
+   FOOTER
+   =========================================== */
+.footer{display:flex;justify-content:space-between;padding:clamp(2rem,4vh,3rem) clamp(3rem,6vw,8rem);font-size:0.6rem;color:var(--text-ghost);letter-spacing:0.1em;border-top:1px solid var(--border-light)}
+
+/* ===========================================
+   SCROLL ANIMATIONS
+   =========================================== */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1),transform 0.8s cubic-bezier(0.16,1,0.3,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-40px);transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1),transform 0.8s cubic-bezier(0.16,1,0.3,1)}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+.stagger-1{transition-delay:0.05s}.stagger-2{transition-delay:0.1s}.stagger-3{transition-delay:0.18s}.stagger-4{transition-delay:0.25s}
+
+/* Hero entrance */
+.hero-left{opacity:0;transform:translateX(-30px);animation:heroSlideIn 0.8s 1.8s cubic-bezier(0.16,1,0.3,1) forwards}
+.hero-right{opacity:0;transform:translateX(30px);animation:heroSlideIn 0.8s 2s cubic-bezier(0.16,1,0.3,1) forwards}
+@keyframes heroSlideIn{to{opacity:1;transform:translateX(0)}}
+
+/* ===========================================
+   RESPONSIVE
+   =========================================== */
+@media(max-width:768px){
+  .hero{grid-template-columns:1fr}.hero-right::after{display:none}
+  .bento{grid-template-columns:1fr}.bento-card:nth-child(1){grid-row:auto}
+  .bento-card{border-right:none!important;border-bottom:1px solid var(--border)!important}.bento-card:last-child{border-bottom:none!important}
+  .about-split{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}.contact-cell{border-right:none!important;border-bottom:1px solid var(--border)}.contact-cell:last-child{border-bottom:none}
+  .work-row{grid-template-columns:60px 1fr 80px}
+  .top-bar{padding:0.6rem 1rem}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition-duration:0.2s!important}.reveal,.reveal-left{opacity:1;transform:none}.hero-left,.hero-right{opacity:1;transform:none}}
+
+/* i18n: hide inactive lang */
+[data-lang="zh"] .en{display:none}
+[data-lang="en"] .zh{display:none}
+</style>
+</head>
+<body>
+
+<!-- Loading Screen -->
+<div class="loader" id="loader">
+  <div class="loader-text">Lucas <em>Zhuang</em></div>
+  <div class="loader-bar"><div class="loader-bar-inner"></div></div>
+</div>
+
+<!-- Top Bar -->
+<div class="top-bar" id="topBar">
+  <button class="toggle-btn" id="langToggle" onclick="toggleLang()">EN</button>
+  <button class="toggle-btn" id="themeToggle" onclick="toggleTheme()">☾</button>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <h1>Lucas<br><em>Zhuang</em></h1>
+    <div class="hero-meta">
+      <span class="zh">Product Manager<br>McDonald's IT<br>Shanghai, China</span>
+      <span class="en">Product Manager<br>McDonald's IT<br>Shanghai, China</span>
+    </div>
+  </div>
+  <div class="hero-right">
+    <h2>"App is Dead,<br>Long Live the Skills."</h2>
+    <p>
+      <span class="zh">用 AI 重新定义门店运营的产品经理。<br>相信每个人都值得拥有自己的 AI Agent，<br>让 Skill 成为 AI 时代的新应用。</span>
+      <span class="en">A product manager redefining store operations with AI.<br>I believe everyone deserves their own AI Agent,<br>and Skills are the new apps of the AI era.</span>
+    </p>
+    <div class="hero-nav">
+      <a class="primary" href="#skills"><span class="zh">Skills</span><span class="en">Skills</span></a>
+      <a href="#works"><span class="zh">作品</span><span class="en">Works</span></a>
+      <a href="#contact"><span class="zh">联系</span><span class="en">Contact</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section parallax-section" id="about">
+  <div class="section-header">
+    <span class="num reveal">00</span>
+    <h2 class="reveal"><span class="zh">关于我</span><span class="en">About</span></h2>
+  </div>
+  <div class="about-split">
+    <div class="about-quote reveal-left">
+      <span class="zh">未来所有的应用开发，应该是面向 AI Agent 的，方便 AI Agent 使用的。</span>
+      <span class="en">All future application development should be designed for AI Agents — built to be used by AI Agents.</span>
+    </div>
+    <div class="about-text reveal stagger-1">
+      <p>
+        <span class="zh">我是庄昱新，大家叫我 Lucas。在麦当劳 IT 部门做产品经理，专注于用 AI 技术改善门店运营效率。</span>
+        <span class="en">I'm Yuxin Zhuang, but everyone calls me Lucas. I'm a product manager at McDonald's IT, focused on improving store operations with AI.</span>
+      </p>
+      <p>
+        <span class="zh">我相信 AI 不应该只是聊天对象，而是能替你工作的搭档。为此我构建了多个 AI Skill，让 AI 像产品经理一样思考、像助手一样执行。</span>
+        <span class="en">I believe AI shouldn't just be a chatbot — it should be a working partner. That's why I build AI Skills that think like a PM and execute like an assistant.</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="section parallax-section" id="skills">
+  <div class="section-header">
+    <span class="num reveal">01</span>
+    <h2 class="reveal"><span class="zh">我做的 Skill</span><span class="en">Skills I Built</span></h2>
+  </div>
+  <div class="bento">
+    <div class="bento-card reveal stagger-1">
+      <div class="idx">01</div>
+      <h3>Cony</h3>
+      <p>
+        <span class="zh">AI 产品经理 Skill。丢一个 idea 进去，通过 4 阶段交互式问卷（愿景→场景→方案→验收）自动精炼为完整 PRD + 原型。从 2 周缩短到 1 天。</span>
+        <span class="en">AI Product Manager Skill. Drop an idea in, and it refines it into a complete PRD through 4-stage interactive questionnaires. From 2 weeks down to 1 day.</span>
+      </p>
+      <div class="pill">AI · PRD · Automation</div>
+    </div>
+    <div class="bento-card reveal stagger-2">
+      <div class="idx">02</div>
+      <h3>Luca</h3>
+      <p>
+        <span class="zh">我的 AI 搭档。能发飞书、读 Confluence、做演示文稿、催人干活。真正的工作伙伴。</span>
+        <span class="en">My AI partner. Sends Feishu messages, reads Confluence, builds slides, and keeps people on track. A real working companion.</span>
+      </p>
+      <div class="pill">Agent · Multi-Channel</div>
+    </div>
+    <div class="bento-card reveal stagger-3">
+      <div class="idx">03</div>
+      <h3><span class="zh">智能排班</span><span class="en">Smart Scheduling</span></h3>
+      <p>
+        <span class="zh">AI 自动排班系统，理解餐厅运营的潜规则，让经理从每周 4 小时的排班工作中解放。</span>
+        <span class="en">AI-powered scheduling that understands the unwritten rules of restaurant operations, saving managers 4 hours every week.</span>
+      </p>
+      <div class="pill">AI · Operations</div>
+    </div>
+  </div>
+</section>
+
+<!-- WORKS -->
+<section class="section parallax-section" id="works">
+  <div class="section-header">
+    <span class="num reveal">02</span>
+    <h2 class="reveal"><span class="zh">博客 & 作品</span><span class="en">Blog & Works</span></h2>
+  </div>
+  <div class="works-editorial">
+    <div class="work-row reveal stagger-1">
+      <div class="yr">2026</div>
+      <h3>App is Dead, Long Live the Skills</h3>
+      <div class="cat">TED Talk</div>
+    </div>
+    <div class="work-row reveal stagger-2">
+      <div class="yr">2026</div>
+      <h3><span class="zh">AI 如何改变产品经理的工作流</span><span class="en">How AI Changes the PM Workflow</span></h3>
+      <div class="cat">Blog</div>
+    </div>
+    <div class="work-row reveal stagger-3">
+      <div class="yr">2026</div>
+      <h3><span class="zh">从脚本到 Skill：给 AI 装上方法论</span><span class="en">From Scripts to Skills: Teaching AI Methodology</span></h3>
+      <div class="cat">Blog</div>
+    </div>
+    <div class="work-row reveal stagger-4">
+      <div class="yr">2026</div>
+      <h3><span class="zh">每个人都值得拥有自己的 AI Agent</span><span class="en">Everyone Deserves Their Own AI Agent</span></h3>
+      <div class="cat">Blog</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section" id="contact">
+  <div class="section-header">
+    <span class="num reveal">03</span>
+    <h2 class="reveal"><span class="zh">联系</span><span class="en">Contact</span></h2>
+  </div>
+  <div class="contact-grid reveal">
+    <div class="contact-cell">
+      <div class="c-label">Email</div>
+      <div class="c-value"><a href="mailto:lucas@example.com">lucas@example.com</a></div>
+    </div>
+    <div class="contact-cell">
+      <div class="c-label">GitHub</div>
+      <div class="c-value"><a href="https://github.com/lucaszzz1202" target="_blank">lucaszzz1202</a></div>
+    </div>
+    <div class="contact-cell">
+      <div class="c-label"><span class="zh">小红书</span><span class="en">Xiaohongshu</span></div>
+      <div class="c-value"><a href="#">@lucas</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="footer">
+  <span>© 2026 Lucas Zhuang</span>
+  <span>Built with 🐾</span>
+</div>
+
+<script>
+/* ===========================================
+   LOADING SCREEN
+   =========================================== */
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('loader').classList.add('hidden');
+  }, 1800);
+});
+
+/* ===========================================
+   THEME TOGGLE (Light/Dark)
+   =========================================== */
+function toggleTheme() {
+  const html = document.documentElement;
+  const btn = document.getElementById('themeToggle');
+  if (html.dataset.theme === 'light') {
+    html.dataset.theme = 'dark';
+    btn.textContent = '☀';
+    localStorage.setItem('theme', 'dark');
+  } else {
+    html.dataset.theme = 'light';
+    btn.textContent = '☾';
+    localStorage.setItem('theme', 'light');
+  }
+}
+// Restore saved theme
+(function() {
+  const saved = localStorage.getItem('theme');
+  if (saved === 'dark') {
+    document.documentElement.dataset.theme = 'dark';
+    document.getElementById('themeToggle').textContent = '☀';
+  }
+})();
+
+/* ===========================================
+   LANGUAGE TOGGLE (ZH/EN)
+   =========================================== */
+function toggleLang() {
+  const html = document.documentElement;
+  const btn = document.getElementById('langToggle');
+  if (html.dataset.lang === 'zh') {
+    html.dataset.lang = 'en';
+    html.lang = 'en';
+    btn.textContent = '中';
+    localStorage.setItem('lang', 'en');
+  } else {
+    html.dataset.lang = 'zh';
+    html.lang = 'zh-CN';
+    btn.textContent = 'EN';
+    localStorage.setItem('lang', 'zh');
+  }
+}
+// Restore saved lang
+(function() {
+  const saved = localStorage.getItem('lang');
+  if (saved === 'en') {
+    document.documentElement.dataset.lang = 'en';
+    document.documentElement.lang = 'en';
+    document.getElementById('langToggle').textContent = '中';
+  }
+})();
+
+/* ===========================================
+   TOP BAR — Scroll background
+   =========================================== */
+const topBar = document.getElementById('topBar');
+window.addEventListener('scroll', () => {
+  topBar.classList.toggle('scrolled', window.scrollY > 50);
+}, { passive: true });
+
+/* ===========================================
+   SCROLL REVEAL
+   =========================================== */
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.05, rootMargin: '50px' });
+
+document.querySelectorAll('.reveal, .reveal-left').forEach(el => revealObserver.observe(el));
+
+// Force check on load
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.querySelectorAll('.reveal, .reveal-left').forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight) {
+        el.classList.add('visible');
+      }
+    });
+  }, 2000);
+});
+
+/* ===========================================
+   PARALLAX — Subtle vertical shift on scroll
+   =========================================== */
+const parallaxSections = document.querySelectorAll('.parallax-section');
+let ticking = false;
+
+function updateParallax() {
+  const scrollY = window.scrollY;
+  parallaxSections.forEach(section => {
+    const rect = section.getBoundingClientRect();
+    const center = rect.top + rect.height / 2;
+    const viewCenter = window.innerHeight / 2;
+    const offset = (center - viewCenter) * 0.04;
+    section.style.transform = `translateY(${offset}px)`;
+  });
+  ticking = false;
+}
+
+window.addEventListener('scroll', () => {
+  if (!ticking) {
+    requestAnimationFrame(updateParallax);
+    ticking = true;
+  }
+}, { passive: true });
+
+/* ===========================================
+   SMOOTH HOVER TILT on Bento Cards
+   =========================================== */
+document.querySelectorAll('.bento-card').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const rect = card.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    card.style.transform = `scale(1.01) perspective(600px) rotateY(${x * 4}deg) rotateX(${-y * 4}deg)`;
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = 'scale(1) perspective(600px) rotateY(0) rotateX(0)';
+  });
+});
+</script>
+
+</body>
+</html>
