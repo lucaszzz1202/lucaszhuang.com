@@ -150,10 +150,14 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);overflo
 .work-row h3{font-family:var(--font-display);font-size:clamp(1.1rem,1.8vw,1.5rem);font-weight:400}
 .work-row .cat{font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-ghost);text-align:right}
 
+/* Avatar in About */
+.about-avatar{width:100%;max-width:280px;aspect-ratio:3/4;object-fit:cover;border:3px solid var(--gold);filter:grayscale(20%);transition:filter 0.4s}
+.about-avatar:hover{filter:grayscale(0%)}
+
 /* ===========================================
    ABOUT
    =========================================== */
-.about-split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(3rem,6vw,6rem);margin-top:2rem}
+.about-split{display:grid;grid-template-columns:1fr auto 1fr;gap:clamp(2rem,4vw,4rem);margin-top:2rem;align-items:center}
 .about-quote{font-family:var(--font-display);font-style:italic;font-size:clamp(1.3rem,2vw,1.8rem);line-height:1.5;border-left:3px solid var(--gold);padding-left:clamp(1rem,2vw,2rem);color:var(--text)}
 .about-text p{font-size:clamp(0.7rem,0.85vw,0.8rem);color:var(--text-light);line-height:2;margin-bottom:1rem}
 
@@ -197,7 +201,7 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);overflo
   .hero{grid-template-columns:1fr}.hero-right::after{display:none}
   .bento{grid-template-columns:1fr}.bento-card:nth-child(1){grid-row:auto}
   .bento-card{border-right:none!important;border-bottom:1px solid var(--border)!important}.bento-card:last-child{border-bottom:none!important}
-  .about-split{grid-template-columns:1fr}
+  .about-split{grid-template-columns:1fr}.about-avatar{max-width:200px;margin:0 auto}
   .contact-grid{grid-template-columns:1fr}.contact-cell{border-right:none!important;border-bottom:1px solid var(--border)}.contact-cell:last-child{border-bottom:none}
   .work-row{grid-template-columns:60px 1fr 80px}
   .top-bar{padding:0.6rem 1rem}
@@ -226,7 +230,6 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);overflo
 <!-- HERO -->
 <section class="hero">
   <div class="hero-left">
-    <img src="lucas.jpg" alt="Lucas Zhuang" class="avatar">
     <h1>Lucas<br><em>Zhuang</em></h1>
     <div class="hero-meta">
       <span class="zh">Product Manager<br>McDonald's IT<br>Shanghai, China</span>
@@ -258,6 +261,7 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);overflo
       <span class="zh">未来所有的应用开发，应该是面向 AI Agent 的，方便 AI Agent 使用的。</span>
       <span class="en">All future application development should be designed for AI Agents — built to be used by AI Agents.</span>
     </div>
+    <img src="lucas.jpg" alt="Lucas Zhuang" class="about-avatar reveal">
     <div class="about-text reveal stagger-1">
       <p>
         <span class="zh">我是庄昱新，大家叫我 Lucas。在麦当劳 IT 部门做产品经理，专注于用 AI 技术改善门店运营效率。</span>
