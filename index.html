@@ -82,7 +82,7 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);overflo
 .hero-left{
   background:var(--bg-dark);color:var(--bg);
   display:flex;flex-direction:column;justify-content:center;
-  padding:clamp(2.5rem,4vw,5rem) clamp(3rem,6vw,8rem);
+  padding:clamp(1.5rem,3vw,3rem) clamp(2rem,4vw,5rem);
   position:relative;overflow:hidden;
 }
 [data-theme="dark"] .hero-left{background:#faf9f5;color:#141413}
@@ -93,13 +93,13 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);overflo
   color:var(--hero-watermark);line-height:0.85;
   pointer-events:none;font-style:italic;
 }
-.hero h1{font-family:var(--font-display);font-weight:700;font-size:clamp(2.5rem,5vw,4.5rem);line-height:0.92;margin-bottom:clamp(1rem,2vh,2rem)}
+.hero h1{font-family:var(--font-display);font-weight:700;font-size:clamp(2rem,4vw,3.5rem);line-height:0.92;margin-bottom:clamp(0.8rem,1.5vh,1.2rem)}
 .hero h1 em{font-style:italic;color:var(--gold)}
 [data-theme="dark"] .hero h1 em{color:var(--gold)}
 .hero-meta{font-size:clamp(0.6rem,0.75vw,0.7rem);letter-spacing:0.2em;text-transform:uppercase;color:var(--hero-meta);line-height:2.2}
 [data-theme="dark"] .hero-meta{color:rgba(20,20,19,0.4)}
 
-.hero-right{display:flex;flex-direction:column;justify-content:center;padding:clamp(2.5rem,4vw,5rem) clamp(3rem,6vw,8rem);position:relative}
+.hero-right{display:flex;flex-direction:column;justify-content:center;padding:clamp(1.5rem,3vw,3rem) clamp(2rem,4vw,5rem);position:relative}
 .hero-right::after{content:'';position:absolute;bottom:0;right:0;width:clamp(80px,10vw,130px);height:clamp(80px,10vw,130px);background:var(--gold);clip-path:polygon(100% 0,100% 100%,0 100%)}
 .hero-right h2{font-family:var(--font-display);font-weight:400;font-size:clamp(1.5rem,2.5vw,2.2rem);font-style:italic;line-height:1.4;margin-bottom:1.5rem}
 .hero-right p{font-size:clamp(0.7rem,0.85vw,0.8rem);color:var(--text-light);line-height:2;max-width:400px}
@@ -153,7 +153,7 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);overflo
 .work-row .cat{font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-ghost);text-align:right}
 
 /* Avatar in About */
-.about-avatar{width:100%;max-width:220px;aspect-ratio:1/1;object-fit:cover;object-position:top;border:3px solid var(--gold);border-radius:12px;filter:grayscale(20%);transition:filter 0.4s}
+.about-avatar{width:100%;max-width:150px;aspect-ratio:1/1;object-fit:cover;object-position:top;border:3px solid var(--gold);border-radius:12px;filter:grayscale(20%);transition:filter 0.4s}
 .about-avatar:hover{filter:grayscale(0%)}
 
 /* ===========================================
