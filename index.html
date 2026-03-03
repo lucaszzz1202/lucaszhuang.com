@@ -148,10 +148,10 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);overflo
    WORKS
    =========================================== */
 .works-editorial{max-width:100%}
-.work-row{display:grid;grid-template-columns:120px 1fr 120px;align-items:baseline;padding:clamp(1.2rem,2vh,2rem) 0;border-bottom:1px solid var(--border);transition:all 0.3s;cursor:default}
+.work-row{display:grid;grid-template-columns:1fr 120px;align-items:baseline;padding:clamp(1.2rem,2vh,2rem) 0;border-bottom:1px solid var(--border);transition:all 0.3s;cursor:default}
 .work-row:first-child{border-top:1px solid var(--border)}
 .work-row:hover{padding-left:1.5rem;background:var(--gold-ghost)}
-.work-row .yr{font-family:var(--font-display);font-size:clamp(1.2rem,1.8vw,1.5rem);font-style:italic;color:var(--gold)}
+.work-row .yr{font-family:var(--font-display);font-size:clamp(0.7rem,0.9vw,0.85rem);font-style:italic;color:var(--text-ghost);text-align:right}
 .work-row h3{font-family:var(--font-display);font-size:clamp(1.1rem,1.8vw,1.5rem);font-weight:400}
 .work-row .cat{font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-ghost);text-align:right}
 
@@ -208,7 +208,7 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);overflo
   .bento{grid-template-columns:1fr}.bento-card{border-right:none!important;border-bottom:1px solid var(--border)!important}.bento-card:last-child{border-bottom:none!important}
   .about-split{grid-template-columns:1fr}.about-avatar{max-width:200px;margin:0 auto}
   .contact-grid{grid-template-columns:1fr}.contact-cell{border-right:none!important;border-bottom:1px solid var(--border)}.contact-cell:last-child{border-bottom:none}
-  .work-row{grid-template-columns:90px 1fr 80px}
+  .work-row{grid-template-columns:1fr 80px}
   .top-bar{padding:0.6rem 1rem}
 }
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition-duration:0.2s!important}.reveal,.reveal-left{opacity:1;transform:none}.hero-left,.hero-right{opacity:1;transform:none}}
@@ -317,19 +317,16 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);overflo
   </div>
   <div class="works-editorial">
     <a class="work-row reveal stagger-1" href="articles/ai-companionship.html" style="text-decoration:none;color:inherit;cursor:pointer">
-      <div class="yr">2025.06.19</div>
       <h3><span class="zh">AI陪伴的终极使命：不是让你依赖虚拟，而是帮你找到真实</span><span class="en">The Ultimate Mission of AI Companionship</span></h3>
-      <div class="cat"><span class="zh">公众号 · 新新小心</span><span class="en">WeChat · 新新小心</span></div>
+      <div class="yr">2025.06.19</div>
     </a>
     <a class="work-row reveal stagger-2" href="articles/capwords.html" style="text-decoration:none;color:inherit;cursor:pointer">
-      <div class="yr">2025.04.18</div>
       <h3><span class="zh">用 AI 让学英语上瘾，CapWords 让你像抓宝可梦一样记单词！</span><span class="en">CapWords: Learn Vocabulary Like Catching Pokémon!</span></h3>
-      <div class="cat"><span class="zh">公众号 · 特工宇宙</span><span class="en">WeChat · 特工宇宙</span></div>
+      <div class="yr">2025.04.18</div>
     </a>
     <a class="work-row reveal stagger-3" href="articles/manus-less-structure.html" style="text-decoration:none;color:inherit;cursor:pointer">
-      <div class="yr">2025.03.08</div>
       <h3><span class="zh">Manus 给 Agent 产品设计带来的启示：Less Structure</span><span class="en">Lessons from Manus for Agent Product Design: Less Structure</span></h3>
-      <div class="cat"><span class="zh">公众号 · 新新小心</span><span class="en">WeChat · 新新小心</span></div>
+      <div class="yr">2025.03.08</div>
     </a>
   </div>
 </section>

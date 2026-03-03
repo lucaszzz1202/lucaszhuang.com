@@ -105,9 +105,8 @@ if (startIdx === -1 || endIdx === -1) {
 const articleRows = posts.map((post, i) => {
   const dateStr = new Date(post.date).toISOString().slice(0, 10).replace(/-/g, '.');
   return `    <a class="work-row reveal stagger-${i + 1}" href="articles/${post.slug}.html" style="text-decoration:none;color:inherit;cursor:pointer">
-      <div class="yr">${dateStr}</div>
       <h3><span class="zh">${post.title}</span><span class="en">${post.title_en || post.title}</span></h3>
-      <div class="cat"><span class="zh">${(post.source || '').replace(' · ', ' · ')}</span><span class="en">${post.source_en || post.source || ''}</span></div>
+      <div class="yr">${dateStr}</div>
     </a>`;
 }).join('\n');
 
