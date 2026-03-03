@@ -172,10 +172,10 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);overflo
 .contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:2px solid var(--text);margin-top:3rem}
 .contact-cell{padding:clamp(1.5rem,3vw,2.5rem);border-right:1px solid var(--border);transition:background 0.3s,color 0.3s}
 .contact-cell:last-child{border-right:none}
-.contact-cell:hover{background:var(--bg-dark);color:var(--bg)}
-.contact-cell:hover .c-value{color:var(--bg)}
-[data-theme="dark"] .contact-cell:hover{background:#faf9f5;color:#141413}
-[data-theme="dark"] .contact-cell:hover .c-value{color:#141413}
+.contact-cell:hover{background:var(--bg-dark);color:var(--bg)!important}
+.contact-cell:hover .c-value{color:var(--bg)!important}
+[data-theme="dark"] .contact-cell:hover{background:#faf9f5;color:#141413!important}
+[data-theme="dark"] .contact-cell:hover .c-value{color:#141413!important}
 .contact-cell:hover .c-label{color:var(--gold)}
 .contact-cell .c-label{font-size:0.55rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--text-ghost);margin-bottom:0.8rem;transition:color 0.3s}
 .contact-cell .c-value{font-family:var(--font-display);font-size:clamp(1rem,1.5vw,1.3rem);font-style:italic;transition:color 0.3s}

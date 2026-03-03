@@ -65,7 +65,7 @@ function articleTemplate(post) {
     <span>${dateStr}</span>
     <span>${post.source}</span>
   </div>
-  <h1>${post.title}</h1>
+  <h1><span class="zh">${post.title}</span><span class="en">${post.title_en || post.title}</span></h1>
 ${post.html}
 ${post.original ? `  <p style="margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--border)"><a href="${post.original}" target="_blank" style="color:var(--gold);text-decoration:none;font-size:0.85rem">📎 查看原文（含图片） →</a></p>` : ''}
 </article>
