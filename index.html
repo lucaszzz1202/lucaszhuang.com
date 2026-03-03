@@ -76,34 +76,18 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);overflo
 .avatar{width:clamp(80px,10vw,120px);height:clamp(80px,10vw,120px);border-radius:50%;object-fit:cover;border:3px solid var(--gold);margin-bottom:clamp(1rem,2vh,1.5rem);opacity:0;animation:heroSlideIn 0.8s 1.6s cubic-bezier(0.16,1,0.3,1) forwards}
 
 /* ===========================================
-   HERO — Compact split
+   HERO — Compact centered
    =========================================== */
-.hero{min-height:auto;display:grid;grid-template-columns:55% 45%;position:relative}
-.hero-left{
-  background:var(--bg-dark);color:var(--bg);
-  display:flex;flex-direction:column;justify-content:center;
-  padding:clamp(1.5rem,3vw,3rem) clamp(2rem,4vw,5rem);
-  position:relative;overflow:hidden;
-}
-[data-theme="dark"] .hero-left{background:#faf9f5;color:#141413}
-.hero-left::before{
-  content:'LUCAS';position:absolute;
-  top:clamp(1rem,3vh,3rem);left:clamp(2rem,4vw,5rem);
-  font-family:var(--font-display);font-size:clamp(5rem,12vw,10rem);
-  color:var(--hero-watermark);line-height:0.85;
-  pointer-events:none;font-style:italic;
-}
-.hero h1{font-family:var(--font-display);font-weight:700;font-size:clamp(2rem,4vw,3.5rem);line-height:0.92;margin-bottom:clamp(0.8rem,1.5vh,1.2rem)}
-.hero h1 em{font-style:italic;color:var(--gold)}
-[data-theme="dark"] .hero h1 em{color:var(--gold)}
-.hero-meta{font-size:clamp(0.6rem,0.75vw,0.7rem);letter-spacing:0.2em;text-transform:uppercase;color:var(--hero-meta);line-height:2.2}
-[data-theme="dark"] .hero-meta{color:rgba(20,20,19,0.4)}
-
-.hero-right{display:flex;flex-direction:column;justify-content:center;padding:clamp(1.5rem,3vw,3rem) clamp(2rem,4vw,5rem);position:relative}
-.hero-right::after{content:'';position:absolute;bottom:0;right:0;width:clamp(80px,10vw,130px);height:clamp(80px,10vw,130px);background:var(--gold);clip-path:polygon(100% 0,100% 100%,0 100%)}
-.hero-right h2{font-family:var(--font-display);font-weight:400;font-size:clamp(1.5rem,2.5vw,2.2rem);font-style:italic;line-height:1.4;margin-bottom:1.5rem}
-.hero-right p{font-size:clamp(0.7rem,0.85vw,0.8rem);color:var(--text-light);line-height:2;max-width:400px}
-.hero-nav{display:flex;gap:1rem;margin-top:2rem}
+.hero{display:flex;align-items:center;justify-content:center;padding:clamp(4rem,8vh,6rem) clamp(3rem,6vw,8rem);gap:clamp(3rem,5vw,5rem);position:relative}
+.hero::after{content:'';position:absolute;bottom:0;right:0;width:clamp(60px,8vw,100px);height:clamp(60px,8vw,100px);background:var(--gold);clip-path:polygon(100% 0,100% 100%,0 100%)}
+.hero-left{flex-shrink:0;text-align:center}
+.hero-right{max-width:520px}
+.hero-right h1{font-family:var(--font-display);font-weight:700;font-size:clamp(2.2rem,4vw,3.5rem);line-height:0.95;margin-bottom:clamp(0.5rem,1vh,0.8rem)}
+.hero-right h1 em{font-style:italic;color:var(--gold)}
+.hero-meta{font-size:clamp(0.55rem,0.7vw,0.65rem);letter-spacing:0.2em;text-transform:uppercase;color:var(--text-ghost);margin-bottom:clamp(1rem,2vh,1.5rem)}
+.hero-right h2{font-family:var(--font-display);font-weight:400;font-size:clamp(1.1rem,1.8vw,1.5rem);font-style:italic;line-height:1.4;margin-bottom:1.2rem;color:var(--text)}
+.hero-right p{font-size:clamp(0.7rem,0.85vw,0.8rem);color:var(--text-light);line-height:2}
+.hero-nav{display:flex;gap:1rem;margin-top:1.5rem}
 .hero-nav a{font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;text-decoration:none;color:var(--text);padding:0.6em 1.5em;border:1.5px solid var(--text);transition:all 0.3s}
 .hero-nav a:hover{background:var(--bg-dark);color:var(--bg);border-color:var(--bg-dark)}
 .hero-nav a.primary{background:var(--bg-dark);color:var(--bg);border-color:var(--bg-dark)}
@@ -196,14 +180,15 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);overflo
 .stagger-1{transition-delay:0.05s}.stagger-2{transition-delay:0.1s}.stagger-3{transition-delay:0.18s}.stagger-4{transition-delay:0.25s}
 
 /* Hero entrance */
-.hero-left{opacity:0;transform:translateX(-30px);animation:heroSlideIn 0.8s 1.8s cubic-bezier(0.16,1,0.3,1) forwards}
-.hero-right{opacity:0;transform:translateX(30px);animation:heroSlideIn 0.8s 2s cubic-bezier(0.16,1,0.3,1) forwards}
-@keyframes heroSlideIn{to{opacity:1;transform:translateX(0)}}
+.hero-left{opacity:0;animation:heroSlideIn 0.8s 1.8s cubic-bezier(0.16,1,0.3,1) forwards}
+.hero-right{opacity:0;animation:heroSlideIn 0.8s 2s cubic-bezier(0.16,1,0.3,1) forwards}
+@keyframes heroSlideIn{to{opacity:1}}
 
 /* ===========================================
    RESPONSIVE
    =========================================== */
 @media(max-width:768px){
+  .hero{flex-direction:column;text-align:center;padding:clamp(3rem,6vh,4rem) 1.5rem}.hero-right{text-align:center}.hero-nav{justify-content:center}
   .hero{grid-template-columns:1fr}.hero-right::after{display:none}
   .bento{grid-template-columns:1fr}.bento-card{border-right:none!important;border-bottom:1px solid var(--border)!important}.bento-card:last-child{border-bottom:none!important}
   .about-split{grid-template-columns:1fr}.about-avatar{max-width:200px;margin:0 auto}
@@ -232,17 +217,16 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);overflo
   <button class="toggle-btn" id="themeToggle" onclick="toggleTheme()">☾</button>
 </div>
 
-<!-- HERO + ABOUT merged -->
+<!-- HERO -->
 <section class="hero">
   <div class="hero-left">
-    <img src="lucas.jpg" alt="Lucas Zhuang" class="about-avatar reveal" style="margin-bottom:1.5rem">
-    <h1>Lucas<br><em>Zhuang</em></h1>
-    <div class="hero-meta">
-      <span class="zh">Product Manager<br>McDonald's IT<br>Shanghai, China</span>
-      <span class="en">Product Manager<br>McDonald's IT<br>Shanghai, China</span>
-    </div>
+    <img src="lucas.jpg" alt="Lucas Zhuang" class="about-avatar">
   </div>
   <div class="hero-right">
+    <h1>Lucas<br><em>Zhuang</em></h1>
+    <div class="hero-meta">
+      Product Manager · McDonald's IT · Shanghai
+    </div>
     <h2>"App is Dead,<br>Long Live the Skills."</h2>
     <p>
       <span class="zh">Lucas，麦当劳 IT 产品经理。让 AI 帮餐厅干活，这是我的日常。</span>
@@ -254,7 +238,7 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);overflo
     </p>
     <div class="hero-nav">
       <a class="primary" href="#skills"><span class="zh">Skills</span><span class="en">Skills</span></a>
-      <a href="#works"><span class="zh">作品</span><span class="en">Works</span></a>
+      <a href="#works"><span class="zh">文章</span><span class="en">Articles</span></a>
       <a href="#contact"><span class="zh">联系</span><span class="en">Contact</span></a>
     </div>
   </div>
