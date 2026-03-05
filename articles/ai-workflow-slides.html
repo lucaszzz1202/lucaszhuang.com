@@ -648,9 +648,128 @@ p, li {
 </section>
 
 <!-- ===========================================
-     SLIDE 9 — 原型：从 Figma 到代码
+     SLIDE 9 — Cony: Phase 0 覆盖度分析
      =========================================== -->
 <section class="slide grid-bg" id="slide-9">
+    <div class="slide-content">
+        <span class="label reveal">Cony · Phase 0</span>
+        <h2 class="reveal">先扫描，再<span class="highlight-orange">精准提问</span></h2>
+        <div class="two-col reveal" style="margin-top: var(--content-gap);">
+            <div>
+                <p style="color: var(--text-secondary); font-size: var(--body-size); margin-bottom: var(--element-gap);">输入你的 idea 或初稿后，Cony 先做覆盖度分析：</p>
+                <div style="display: flex; flex-direction: column; gap: var(--element-gap);">
+                    <div style="display: flex; align-items: center; gap: 0.6rem;">
+                        <span style="font-size: 1.1em;">✅</span>
+                        <span style="font-size: var(--small-size); color: var(--accent-green);">已覆盖 → 直接纳入，不重复问</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 0.6rem;">
+                        <span style="font-size: 1.1em;">🔶</span>
+                        <span style="font-size: var(--small-size); color: var(--accent-orange);">部分覆盖 → 生成验证类问题</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 0.6rem;">
+                        <span style="font-size: 1.1em;">❌</span>
+                        <span style="font-size: var(--small-size); color: #e05252;">未覆盖 → 生成挖掘类问题</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card" style="text-align: center;">
+                <p style="font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: var(--element-gap);">🔍📋</p>
+                <p style="font-size: var(--small-size); color: var(--text-muted);">15 维度逐一扫描<br>自动判定每个阶段 EXECUTE 或 SKIP</p>
+            </div>
+        </div>
+        <p class="reveal" style="margin-top: var(--element-gap); color: var(--text-muted); font-size: var(--small-size); text-align: center;">
+            你写得越完整，Cony 问得越少 · 复杂度自动判定（低/中/高）影响问卷深度
+        </p>
+    </div>
+    <span class="slide-number">09</span>
+</section>
+
+<!-- ===========================================
+     SLIDE 10 — Cony: 质量门禁
+     =========================================== -->
+<section class="slide mesh-bg" id="slide-10">
+    <div class="slide-content" style="align-items: center; text-align: center;">
+        <span class="label reveal">Cony · 质量门禁</span>
+        <h2 class="reveal">核心标准：<span class="highlight-orange">开发能否<br>不问任何人直接编码？</span></h2>
+        <div class="card-grid reveal" style="margin-top: var(--content-gap); grid-template-columns: repeat(auto-fit, minmax(min(100%, 160px), 1fr)); max-width: 700px;">
+            <div class="card" style="text-align: center; padding: clamp(0.5rem, 1vw, 0.8rem);">
+                <span style="font-size: 1.2em;">📋</span>
+                <p style="font-size: var(--small-size); margin-top: 0.3rem;">完整性</p>
+            </div>
+            <div class="card" style="text-align: center; padding: clamp(0.5rem, 1vw, 0.8rem);">
+                <span style="font-size: 1.2em;">🔗</span>
+                <p style="font-size: var(--small-size); margin-top: 0.3rem;">一致性</p>
+            </div>
+            <div class="card" style="text-align: center; padding: clamp(0.5rem, 1vw, 0.8rem);">
+                <span style="font-size: 1.2em;">🎯</span>
+                <p style="font-size: var(--small-size); margin-top: 0.3rem;">专业性</p>
+            </div>
+            <div class="card" style="text-align: center; padding: clamp(0.5rem, 1vw, 0.8rem);">
+                <span style="font-size: 1.2em;">⚙️</span>
+                <p style="font-size: var(--small-size); margin-top: 0.3rem;">功能完备性</p>
+            </div>
+            <div class="card" style="text-align: center; padding: clamp(0.5rem, 1vw, 0.8rem);">
+                <span style="font-size: 1.2em;">✅</span>
+                <p style="font-size: var(--small-size); margin-top: 0.3rem;">覆盖率</p>
+            </div>
+        </div>
+        <p class="reveal" style="margin-top: var(--content-gap); color: var(--text-secondary); font-size: var(--small-size); max-width: 500px;">
+            撰写前：检查未确认假设 + 开放问题<br>
+            撰写后：5 维度质量自检，<span class="highlight-orange">🔴 项清零</span>才能交付
+        </p>
+    </div>
+    <span class="slide-number">10</span>
+</section>
+
+<!-- ===========================================
+     SLIDE 11 — Cony: 完整闭环
+     =========================================== -->
+<section class="slide grid-bg" id="slide-11">
+    <div class="slide-content">
+        <span class="label reveal">Cony · 完整闭环</span>
+        <h2 class="reveal">从 Idea 到交付，<span class="highlight-green">一条龙</span></h2>
+        <div class="reveal" style="margin-top: var(--content-gap);">
+            <div class="flow" style="justify-content: center;">
+                <span class="flow-step active">💡 输入</span>
+                <span class="flow-arrow">→</span>
+                <span class="flow-step active">🔍 分析</span>
+                <span class="flow-arrow">→</span>
+                <span class="flow-step active">💬 问卷</span>
+                <span class="flow-arrow">→</span>
+                <span class="flow-step active">📄 撰写</span>
+                <span class="flow-arrow">→</span>
+                <span class="flow-step active">🖼️ 原型</span>
+                <span class="flow-arrow">→</span>
+                <span class="flow-step active">✅ 自检</span>
+                <span class="flow-arrow">→</span>
+                <span class="flow-step active">📋 回填</span>
+            </div>
+        </div>
+        <div class="card-grid reveal" style="margin-top: var(--content-gap); grid-template-columns: repeat(3, 1fr);">
+            <div class="card" style="border-top: 3px solid var(--accent-orange); text-align: center;">
+                <p style="font-size: 1.3em; margin-bottom: 0.3rem;">🖼️</p>
+                <h3 style="font-size: var(--small-size); color: var(--accent-orange); margin-bottom: 0.3rem;">原型自动生成</h3>
+                <p style="font-size: var(--small-size); color: var(--text-muted);">代码生成 + 截图<br>嵌入 PRD</p>
+            </div>
+            <div class="card" style="border-top: 3px solid var(--accent-blue); text-align: center;">
+                <p style="font-size: 1.3em; margin-bottom: 0.3rem;">📚</p>
+                <h3 style="font-size: var(--small-size); color: var(--accent-blue); margin-bottom: 0.3rem;">知识沉淀</h3>
+                <p style="font-size: var(--small-size); color: var(--text-muted);">模块清单 + 术语表<br>越用越聪明</p>
+            </div>
+            <div class="card" style="border-top: 3px solid var(--accent-green); text-align: center;">
+                <p style="font-size: 1.3em; margin-bottom: 0.3rem;">🔄</p>
+                <h3 style="font-size: var(--small-size); color: var(--accent-green); margin-bottom: 0.3rem;">阶段流转</h3>
+                <p style="font-size: var(--small-size); color: var(--text-muted);">自动通知下游<br>支持退回变更</p>
+            </div>
+        </div>
+    </div>
+    <span class="slide-number">11</span>
+</section>
+
+<!-- ===========================================
+     SLIDE 12 — 原型：从 Figma 到代码
+     =========================================== -->
+<section class="slide grid-bg" id="slide-12">
     <div class="slide-content">
         <span class="label reveal">原型革新</span>
         <h2 class="reveal">从 Figma 到<span class="highlight-blue">代码原型</span></h2>
@@ -673,13 +792,13 @@ p, li {
             </div>
         </div>
     </div>
-    <span class="slide-number">09</span>
+    <span class="slide-number">12</span>
 </section>
 
 <!-- ===========================================
-     SLIDE 10 — Confluence MCP: 最后一公里
+     SLIDE 13 — Confluence MCP: 最后一公里
      =========================================== -->
-<section class="slide" id="slide-10">
+<section class="slide" id="slide-13">
     <div class="slide-content" style="align-items: center; text-align: center;">
         <span class="label reveal">打通最后一公里</span>
         <h2 class="reveal">Confluence <span class="highlight-green">MCP</span></h2>
@@ -698,13 +817,13 @@ p, li {
             <span class="highlight-orange">一键到位</span>
         </p>
     </div>
-    <span class="slide-number">10</span>
+    <span class="slide-number">13</span>
 </section>
 
 <!-- ===========================================
-     SLIDE 11 — 数据分析的变化
+     SLIDE 14 — 数据分析的变化
      =========================================== -->
-<section class="slide mesh-bg" id="slide-11">
+<section class="slide mesh-bg" id="slide-14">
     <div class="slide-content">
         <span class="label reveal">数据分析</span>
         <h2 class="reveal">从手写 SQL 到<span class="highlight-orange">自然语言</span></h2>
@@ -727,13 +846,13 @@ p, li {
             </div>
         </div>
     </div>
-    <span class="slide-number">11</span>
+    <span class="slide-number">14</span>
 </section>
 
 <!-- ===========================================
-     SLIDE 12 — 三种 AI 用法对比
+     SLIDE 15 — 三种 AI 用法对比
      =========================================== -->
-<section class="slide grid-bg" id="slide-12">
+<section class="slide grid-bg" id="slide-15">
     <div class="slide-content">
         <span class="label reveal">Part 2 · 洞见</span>
         <h2 class="reveal">三种 AI 用法<span class="highlight-blue">对比</span></h2>
@@ -755,13 +874,13 @@ p, li {
             </div>
         </div>
     </div>
-    <span class="slide-number">12</span>
+    <span class="slide-number">15</span>
 </section>
 
 <!-- ===========================================
-     SLIDE 13 — 什么是 Skill？
+     SLIDE 16 — 什么是 Skill？
      ======================================== -->
-<section class="slide mesh-bg" id="slide-13">
+<section class="slide mesh-bg" id="slide-16">
     <div class="slide-content" style="align-items: center; text-align: center;">
         <span class="label reveal">App is Dead, Long Live the Skills</span>
         <h2 class="reveal">什么是 <span class="highlight-orange">Skill</span>？</h2>
@@ -784,13 +903,13 @@ p, li {
             任何人都可以把自己的专业能力变成 Skill
         </p>
     </div>
-    <span class="slide-number">13</span>
+    <span class="slide-number">16</span>
 </section>
 
 <!-- ===========================================
-     SLIDE 14 — Skill 生态
+     SLIDE 17 — Skill 生态
      =========================================== -->
-<section class="slide grid-bg" id="slide-14">
+<section class="slide grid-bg" id="slide-17">
     <div class="slide-content">
         <span class="label reveal">生态</span>
         <h2 class="reveal">Skill · Power · <span class="highlight-green">MCP</span></h2>
@@ -812,13 +931,13 @@ p, li {
             三者组合 = AI 不只会说，还会做，还能连
         </p>
     </div>
-    <span class="slide-number">14</span>
+    <span class="slide-number">17</span>
 </section>
 
 <!-- ===========================================
-     SLIDE 15 — Less Structure, More Intelligence
+     SLIDE 18 — Less Structure, More Intelligence
      =========================================== -->
-<section class="slide" id="slide-15">
+<section class="slide" id="slide-18">
     <div class="slide-content" style="align-items: center; text-align: center; padding: 0 clamp(2rem, 8vw, 12rem);">
         <span class="label reveal">启发</span>
         <h2 class="reveal" style="margin-top: var(--element-gap);">Less Structure,<br><span class="highlight-orange">More Intelligence</span></h2>
@@ -830,13 +949,13 @@ p, li {
             — 来自 Manus 的启发
         </p>
     </div>
-    <span class="slide-number">15</span>
+    <span class="slide-number">18</span>
 </section>
 
 <!-- ===========================================
-     SLIDE 16 — 愿景图
+     SLIDE 19 — 愿景图
      =========================================== -->
-<section class="slide mesh-bg grid-bg" id="slide-16">
+<section class="slide mesh-bg grid-bg" id="slide-19">
     <div class="slide-content">
         <span class="label reveal">Part 3 · 展望</span>
         <h2 class="reveal">每个人都有自己的 <span class="highlight-blue">Agent</span></h2>
@@ -861,13 +980,13 @@ p, li {
             <span class="highlight-orange">Agent 即团队成员</span>
         </p>
     </div>
-    <span class="slide-number">16</span>
+    <span class="slide-number">19</span>
 </section>
 
 <!-- ===========================================
-     SLIDE 17 — A2A 协作流
+     SLIDE 20 — A2A 协作流
      =========================================== -->
-<section class="slide" id="slide-17">
+<section class="slide" id="slide-20">
     <div class="slide-content" style="align-items: center;">
         <span class="label reveal">Agent-to-Agent</span>
         <h2 class="reveal"><span class="highlight-orange">A2A</span> 协作流</h2>
@@ -890,13 +1009,13 @@ p, li {
             </ul>
         </div>
     </div>
-    <span class="slide-number">17</span>
+    <span class="slide-number">20</span>
 </section>
 
 <!-- ===========================================
-     SLIDE 18 — 我们正在跑通的案例
+     SLIDE 21 — 我们正在跑通的案例
      =========================================== -->
-<section class="slide mesh-bg" id="slide-18">
+<section class="slide mesh-bg" id="slide-21">
     <div class="slide-content" style="align-items: center; text-align: center;">
         <span class="label reveal">Real Case</span>
         <h2 class="reveal">我们正在<span class="highlight-orange">跑通</span>的案例</h2>
@@ -915,13 +1034,13 @@ p, li {
             "这不是 PPT，<br>这是我们下个月要交付的东西"
         </p>
     </div>
-    <span class="slide-number">18</span>
+    <span class="slide-number">21</span>
 </section>
 
 <!-- ===========================================
-     SLIDE 19 — Agent 之间的知识传播
+     SLIDE 22 — Agent 之间的知识传播
      =========================================== -->
-<section class="slide mesh-bg" id="slide-19">
+<section class="slide mesh-bg" id="slide-22">
     <div class="slide-content">
         <span class="label reveal">更远的未来</span>
         <h2 class="reveal">Agent 之间的<span class="highlight-orange">知识传播</span></h2>
@@ -947,13 +1066,13 @@ p, li {
             <span class="highlight-orange">知识传播的第三次革命</span>
         </p>
     </div>
-    <span class="slide-number">19</span>
+    <span class="slide-number">22</span>
 </section>
 
 <!-- ===========================================
-     SLIDE 20 — 结尾 Call to Action
+     SLIDE 23 — 结尾 Call to Action
      =========================================== -->
-<section class="slide grid-bg mesh-bg" id="slide-20">
+<section class="slide grid-bg mesh-bg" id="slide-23">
     <div class="corner-mark top-left"></div>
     <div class="corner-mark bottom-right"></div>
     <div class="slide-content" style="align-items: center; text-align: center;">
