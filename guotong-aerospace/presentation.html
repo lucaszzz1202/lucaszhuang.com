@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>国彤创丰 — 商业航天产业投资布局与合作基金发展</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        /* ===========================================
+           CSS CUSTOM PROPERTIES (THEME)
+           Style B: 经典白底，极简杂志社论风
+           =========================================== */
+        :root {
+            --bg-primary: #fafaf8;
+            --bg-secondary: #f0efe9;
+            --text-primary: #1a2744;
+            --text-secondary: #666;
+            --text-muted: #888;
+            --accent: #c5a059;
+            --accent-light: rgba(197,160,89,0.15);
+            --border-light: #d4cfc4;
+            --font-display: 'Noto Serif SC', serif;
+            --font-body: 'Noto Sans SC', sans-serif;
+            --title-size: clamp(1.6rem, 4.5vw, 3.2rem);
+            --h2-size: clamp(1.3rem, 3.5vw, 2.4rem);
+            --h3-size: clamp(1rem, 2vw, 1.4rem);
+            --body-size: clamp(0.75rem, 1.3vw, 1.05rem);
+            --small-size: clamp(0.65rem, 1vw, 0.85rem);
+            --slide-padding: clamp(2rem, 5vw, 6rem);
+            --content-gap: clamp(0.8rem, 2vw, 1.5rem);
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* ===========================================
+           BASE STYLES
+           =========================================== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html {
+            height: 100%;
+            overflow-x: hidden;
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: var(--font-body);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            height: 100%;
+        }
+
+        /* ===========================================
+           SLIDE CONTAIN          =========================================== */
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            height: 100dvh;
+            overflow: hidden;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            background: var(--bg-primary);
+        }
+        .slide::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0;
+            height: 4px;
+            background: var(--text-primary);
+        }
+        .slide-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            max-height: 100%;
+            overflow: hidden;
+            padding: var(--slide-padding);
+            max-width: 1000px;
+            width: 100%;
+        }
+        .left-accent {
+            position: absolute;
+            left: clamp(1.5rem, 4vw, 4rem);
+            top: 50%; transform: translateY(-50%);
+            width: 2px; height: 100px;
+            background: linear-gradient(180deg, transparent, var(--accent), transparent);
+        }
+        .page-num {
+            position: absolute;
+            bottom: clamp(1.5rem, 3vw, 3rem);
+            right: clamp(2rem, 5vw, 5rem);
+            font-size: 4rem;
+            font-family: var(--font-display);
+            font-weight: 700;
+            color: rgba(26,39,68,0.04);
+            line-height: 1;
+        }
+        .org-label {
+            font-size: var(--small-size);
+            letter-spacing: 0.5em;
+            color: #8a7a5a;
+            margin-bottom: clamp(1rem, 3vh, 2rem);
+            padding-bottom: 0.6rem;
+            border-bottom: 1px solid var(--border-light);
+            display: inline-block;
+        }
+        h1 {
+            font-family: var(--font-display);
+            font-size: var(--title-size);
+            font-weight: 700;
+            line-height: 1.4;
+            color: var(--text-primary);
+            margin-bottom: var(--content-gap);
+        }
+        h2 {
+            font-family: var(--font-display);
+            font-size: var(--h2-size);
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: var(--content-gap);
+            line-height: 1.3;
+        }
+        h3 {
+            font-family: var(--font-display);
+            font-size: var(--h3-size);
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: clamp(0.3rem, 1vh, 0.6rem);
+        }
+        p, li {
+            font-size: var(--body-size);
+            font-weight: 300;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        .subtitle {
+            font-size: var(--body-size);
+            font-weight: 300;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: clamp(1.5rem, 4vh, 3rem);
+        }
+        .meta {
+            display: flex; align-items: center; gap: 1.5rem;
+        }
+        .meta-divider {
+            width: 40px; height: 1px;
+            background: var(--accent);
+        }
+        .speaker-info {
+            font-size: var(--small-size);
+            color: var(--text-muted);
+        }
+        .speaker-info strong {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        /* ===========================================
+           CONTENT CARDS
+           =========================================== */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+            gap: clamp(0.8rem, 1.5vw, 1.2rem);
+            margin-top: var(--content-gap);
+        }
+        .card {
+            background: var(--bg-secondary);
+            border-radius: 6px;
+            padding: clamp(0.8rem, 2vw, 1.5rem);
+            border-left: 3px solid var(--accent);
+        }
+        .card p {
+            font-size: var(--small-size);
+            margin-top: 0.3rem;
+        }
+        .bullet-list {
+            list-style: none;
+            margin-top: var(--content-gap);
+        }
+        .bullet-list li {
+            padding-left: 1.2em;
+            position: relative;
+            margin-bottom: clamp(0.4rem, 1vh, 0.8rem);
+        }
+        .bullet-list li::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0.6em;
+            width: 6px; height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+        .highlight-box {
+            background: var(--accent-light);
+            border-left: 3px solid var(--accent);
+            padding: clamp(0.6rem, 1.5vw, 1.2rem);
+            border-radius: 0 6px 6px 0;
+            margin-top: var(--content-gap);
+        }
+        .highlight-box p {
+            color: var(--text-primary);
+            font-weight: 400;
+        }
+        .section-label {
+            font-size: var(--small-size);
+            letter-spacing: 0.3em;
+            color: var(--accent);
+            text-transform: uppercase;
+            margin-bottom: clamp(0.5rem, 1.5vh, 1rem);
+        }
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: clamp(1rem, 2vw, 2rem);
+            margin-top: var(--content-gap);
+        }
+
+        /* ===========================================
+           ANIMATIONS
+           =========================================== */
+        .reveal {
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: opacity 0.6s var(--ease-out-expo),
+                        transform 0.6s var(--ease-out-expo);
+        }
+        .slide.visible .reveal {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .reveal:nth-child(1) { transition-delay: 0.1s; }
+        .reveal:nth-child(2) { transition-delay: 0.2s; }
+        .reveal:nth-child(3) { transition-delay: 0.3s; }
+        .reveal:nth-child(4) { transition-delay: 0.4s; }
+        .reveal:nth-child(5) { transition-delay: 0.5s; }
+
+        /* ===========================================
+           NAVIGATION
+           =========================================== */
+        .nav-dots {
+            position: fixed;
+            right: clamp(0.8rem, 2vw, 1.5rem);
+            top: 50%; transform: translateY(-50%);
+            display: flex; flex-direction: column;
+            gap: 8px; z-index: 100;
+        }
+        .nav-dot {
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: var(--border-light);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none; padding: 0;
+        }
+        .nav-dot.active {
+            background: var(--accent);
+            transform: scale(1.3);
+        }
+        .progress-bar {
+            position: fixed; top: 0; left: 0;
+            height: 3px; background: var(--accent);
+            z-index: 200; transition: width 0.3s ease;
+        }
+
+        /* ===========================================
+           RESPONSIVE
+           ================================ */
+        @media (max-height: 700px) {
+            :root {
+                --slide-padding: clamp(1rem, 3vw, 3rem);
+                --content-gap: clamp(0.5rem, 1.5vw, 1rem);
+            }
+        }
+        @media (max-height: 500px) {
+            :root {
+                --title-size: clamp(1.2rem, 4vw, 2rem);
+                --h2-size: clamp(1rem, 3vw, 1.6rem);
+                --slide-padding: clamp(0.8rem, 2vw, 1.5rem);
+            }
+            .nav-dots { display: none; }
+        }
+        @media (max-width: 600px) {
+            .two-col { grid-template-columns: 1fr; }
+            .card-grid { grid-template-columns: 1fr; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .reveal { transition: opacity 0.3s ease; transform: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+    <nav class="nav-dots" id="navDots"></nav>
+
+    <!-- ==========================================
+         SLIDE 1: 封面
+         =========================================== -->
+    <section class="slide" data-slide="1">
+        <div class="left-accent"></div>
+        <div class="slide-content">
+            <div class="org-label reveal">国 彤 创 丰</div>
+            <h1 class="reveal">商业航天产业投资布局<br>与合作基金发展</h1>
+            <p class="subtitle reveal">产业趋势研判 · 重点标的分析 · 区域合作基金方案</p>
+            <div class="meta reveal">
+                <div class="meta-divider"></div>
+                <div class="speaker-info">
+                    <strong>张男</strong> &nbsp;&nbsp;国彤创丰 总经理
+                </div>
+            </div>
+        </div>
+        <div class="page-num">01</div>
+    </section>
+
+    <!-- ==========================================
+         SLIDE 2: 目录
+         =========================================== -->
+    <section class="slide" data-slide="2">
+        <div class="left-accent"></div>
+        <div class="slide-content">
+            <div class="section-label reveal">AGENDA</div>
+            <h2 class="reveal">演讲提纲</h2>
+            <div class="card-grid">
+                <div class="card reveal">
+                    <h3>01 产业思考</h3>
+                    <p>商业航天下一步投资布局方向</p>
+                </div>
+                <div class="card reveal">
+                    <h3>02 重点标的</h3>
+                    <p>天兵科技投资分析</p>
+                </div>
+                <div class="card reveal">
+                    <h3>03 合作基金</h3>
+                    <p>南通 · 烟台区域合作基金方案</p>
+        </div>
+            </div>
+        </div>
+        <div class="page-num">02</div>
+    </section>
+
+    <!-- ==========================================
+         SLIDE 3: 产业思考总览
+         =========================================== -->
+    <section class="slide" data-slide="3">
+        <div class="left-accent"></div>
+        <div class="slide-content">
+            <div class="section-label reveal">PART 01</div>
+            <h2 class="reveal">产业思考：商业航天投资布局</h2>
+            <p class="subtitle reveal">行业提速背景下，三大核心方向值得重点关注</p>
+            <div class="card-grid">
+                <div class="card reveal">
+                    <h3>🚀 运载工具与技术</h3>
+                    <p>火箭企业新一批成长机会，动力系统创新</p>
+                </div>
+                <div class="card reveal">
+                    <h3>🏭 成本驱动制造升级</h3>
+                    <p>3D打印、汽车行业技术迁移、部件升级替代</p>
+                </div>
+                <div class="card reveal">
+                    <h3>🛡️ 太空安全</h3>
+                    <p>态势感知、数字孪生、星上网络安全</p>
+                </div>
+            </div>
+        </div>
+        <div class="page-num">03</div>
+    </section>
+
+    <!-- ==========================================
+ E 4: 运载工具与运载技术
+         =========================================== -->
+    <section class="slide" data-slide="4">
+        <div class="left-accent"></div>
+        <div class="slide-content">
+            <div class="section-label reveal">产业思考 · 方向一</div>
+            <h2 class="reveal">运载工具与运载技术</h2>
+            <ul class="bullet-list">
+                <li class="reveal">大的行业提速下，运载工具与运载技术仍存在较大瓶颈</li>
+                <li class="reveal">火箭仍有投资布局机会 — 除已成长的第一批企业外，继续重点关注新一批火箭企业的成长，择机布局</li>
+                <li class="reveal">新的运载技术创新集中在核心分系统，以及前沿应用的工程化落地</li>
+                <li class="reveal">动力系统是关键突破口，具备高技术壁垒与长期价值</li>
+            </ul>
+        </div>
+        <div class="page-num">04</div>
+    </section>
+
+    <!-- ==========================================
+         SLIDE 5: 成本驱动的制造升级
+         =========================================== -->
+    <section class="slide" data-slide="5">
+        <div class="left-accent"></div>
+        <div class="slide-content">
+            <div class="section-label reveal">产业思考 · 方向二</div>
+            <h2 class="reveal">成本驱动下的制造升级</h2>
+            <div class="two-col">
+                <div class="reveal">
+                    <h3>成型工艺与设备升级</h3>
+                    <ul class="bullet-list">
+                        <li>成型工艺升级带来成本数量级下降</li>
+                        <li>3D在航天领域的应用尝试</li>
+                        <li>新工艺推动批量化生产可能</li>
+                    </ul>
+                </div>
+                <div class="reveal">
+                    <h3>传统工业技术迁移</h3>
+                    <ul class="bullet-list">
+                        <li>汽车行业向卫星制造行业迁移</li>
+                        <li>民品级部件向宇航级部件升级替代</li>
+                        <li>规模化生产带来成本优势</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="page-num">05</div>
+    </section>
+
+    <!-- ==========================================
+         SLID6: 太空安全
+         =========================================== -->
+    <section class="slide" data-slide="6">
+        <div class="left-accent"></div>
+        <div class="slide-content">
+            <div class="section-label reveal">产业思考 · 方向三</div>
+            <h2 class="reveal">基于太空安全的投资机会</h2>
+            <div class="card-grid">
+                <div class="card reveal">
+                    <h3>太空物理空间运营</h3>
+                    <p>态势感知及在轨操作服务，保障太空资产安全运行</p>
+                </div>
+                <div class="card reveal">
+                    <h3>实时模拟与数字孪生</h3>
+                    <p>专用传感器构建太空数字孪生 — 矢量传感器、高速脉冲相机等</p>
+                </div>
+                <div class="card reveal">
+                    <h3>太空网络安全</h3>
+                    <p>太空组网后的网络安全建设 — 防御机制、星上防火墙等</p>
+                </div>
+            </div>
+        </div>
+        <div class="page-num">06</div>
+    </section>
+
+    <!-- ==========================================
+         SLIDE 7: 重点标的 — 天兵科技
+         =========================================== -->
+    <section class="slide" data-slide="7">
+        <div class="left-accent"></div>
+        <div class="slide-content">
+            <div class="section-label reveal">PART 02</div>
+            <h2 class="reveal">重点标的：天兵科技</h2>
+            <ul class="bullet-list">
+                <li class="reveal">国内领先的商业运载火箭研发企业</li>
+                <li class="reveal">具备液体火箭全流程自主研发能力</li>
+                <li class="reveal">技术路线清晰，产品迭代节奏稳健</li>
+                <li class="reveal">已获多轮头部机构融资，估值成长性强</li>
+            </ul>
+            <div class="highlight-box reveal">
+                <p>天兵科技代表了新一批火箭企业中的优质标的，契合国彤创丰在运载工具领域的投资布局方向。</p>
+            </div>
+        </div>
+        <div class="page-num">07</div>
+    </section>
+
+    <!-- ==========================================
+         SLIDE 8: 合作基金方案
+         =========================================== -->
+    <section class="slide" data-slide="8">
+        <div class="left-accent"></div>
+        <div class="slide-content">
+            <div class="section-label reveal">PART 03</div>
+            <h2 class="reveal">区域合作基金方案</h2>
+            <p class="subtitle reveal">在南通和烟台发起设立合作基金，谋求共同发展</p>
+            <div class="two-col">
+                <div class="reveal">
+                    <h3>基金架构</h3>
+                    <ul class="bullet-list">
+                        <li>政府引导基金形式</li>
+                        <li>GP + 政府LP + 市场化募集</li>
+                        <li>基金规模 2-3 亿元</li>
+                    </ul>
+                </div>
+                <div class="reveal">
+                    <h3>投资方向</h3>
+                    <ul class="bullet-list">
+                        <li>商业航天产业链</li>
+                        <li>低空经济领域</li>
+                        <li>区域产业协同发展</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="page-num">08</div>
+    </section>
+
+    <!-- ==========================================
+         SLIDE 9: 合作价值
+         =========================================== -->
+    <section class="slide" data-slide="9">
+        <div class="left-accent"></div>
+        <div class="slide-content">
+            <div class="section-label reveal">合作基金</div>
+            <h2 class="reveal">合作共赢价值</h2>
+            <div class="card-grid">
+                <div class="card reveal">
+                    <h3>产业落地</h3>
+              <p>引导优质航天企业落户南通、烟台，带动区域产业升级</p>
+                </div>
+                <div class="card reveal">
+                    <h3>资源整合</h3>
+                    <p>政府资源 + 市场化运作，实现资本与产业深度融合</p>
+                </div>
+                <div class="card reveal">
+                    <h3>生态构建</h3>
+                    <p>围绕商业航天与低空经济，构建区域产业生态圈</p>
+                </div>
+            </div>
+        </div>
+        <div class="page-num">09</div>
+    </section>
+
+    <!-- ==========================================
+         SLIDE 10: 结语
+         =========================================== -->
+    <section class="slide" data-slide="10">
+        <div class="left-accent"></div>
+        <div class="slide-content" style="text-align: center; align-items: center;">
+            <div class="org-label reveal">国 彤 创 丰</div>
+            <h2 class="reveal" style="font-size: var(--title-size);">携手共进<br>布局商业航天新未来</h2>
+            <p class="subtitle reveal">感谢聆听</p>
+            <div class="meta reveal" style="justify-content: center;">
+                <div class="meta-divider"></div>
+                <div class="speaker-info">
+                    <strong>张男</strong> &nbsp;&nbsp;国彤创丰 总经理
+                </div>
+            </div>
+        </div>
+        <div class="page-num">10</div>
+    </section>
+
+    <!-- ==========================================
+         JAVASCRIPT: Navigation & Animations
+         =========================================== -->
+    <script>
+        class SlidePresentation {
+            constructor() {
+                this.slides = document.querySelectorAll('.slide');
+                this.currentSlide = 0;
+                this.isScrolling = false;
+                this.init();
+            }
+
+            init() {
+                this.createNavDots();
+                this.setupObserver();
+                this.setupKeyboard();
+                this.setupWheel();
+                this.setupTouch();
+                this.updateProgress();
+                // Activate first slide
+                this.slides[0].classList.add('visible');
+            }
+
+            createNavDots() {
+                const nav = document.getElementById('navDots');
+                this.slides.forEach((_, i) => {
+                    const dot = document.createElement('button');
+                    dot.className = 'nav-dot' + (i === 0 ? ' active' : '');
+                    dot.setAttribute('aria-label', `Slide ${i + 1}`);
+                    dot.addEventListener('click', () => this.goToSlide(i));
+                    nav.appendChild(dot);
+                });
+                this.dots = nav.querySelectorAll('.nav-dot');
+            }
+
+            setupObserver() {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            const idx = Array.from(this.slides).indexOf(entry.target);
+                  this.currentSlide = idx;
+                            this.updateDots();
+                            this.updateProgress();
+                        }
+                    });
+                }, { threshold: 0.5 });
+                this.slides.forEach(s => observer.observe(s));
+            }
+
+            setupKeyboard() {
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === ' ') {
+                        e.preventDefault();
+                        this.next();
+                    } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                        e.preventDefault();
+                        this.prev();
+                    }
+                });
+            }
+
+            setupWheel() {
+                let lastWheel = 0;
+                document.addEventListener('wheel', (e) => {
+                    const now = Date.now();
+                    if (now - lastWheel < 800) return;
+                    lastWheel = now;
+                    if (e.deltaY > 0) this.next();
+                    else this.prev();
+                }, { passive: true });
+            }
+
+            setupTouch() {
+                let startY = 0;
+                document.addEventListener('touchstart', (e) => {
+                    startY = e.touches[0].clientY;
+                }, { passive: true });
+                document.addEventListener('touchend', (e) => {
+                    const diff = startY - e.changedTouches[0].clientY;
+                    if (Math.abs(diff) > 50) {
+                        if (diff > 0) this.next();
+                        else this.prev();
+                    }
+                }, { passive: true });
+            }
+
+            goToSlide(idx) {
+                if (idx >= 0 && idx < this.slides.length) {
+                    this.slides[idx].scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+
+            next() {
+                if (this.currentSlide < this.slides.length - 1) {
+                    this.goToSlide(this.currentSlide + 1);
+                }
+            }
+
+            prev() {
+                if (this.currentSlide > 0) {
+                    this.goToSlide(this.currentSlide - 1);
+                }
+            }
+
+            updateDots() {
+                this.dots.forEach((d, i) => {
+                    d.classList.toggle('active', i === this.currentSlide);
+                });
+            }
+
+            updateProgress() {
+                const pct = ((this.currentSlide + 1) / this.slides.length) * 100;
+                document.getElementById('progressBar').style.width = pct + '%';
+            }
+        }
+
+        new SlidePresentation();
+    </script>
+</body>
+</html>
