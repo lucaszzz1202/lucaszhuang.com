@@ -657,6 +657,168 @@
         }
 
         new SlidePresentation();
+
+        /* ===========================================
+           INLINE EDITOR
+           Press E or hover top-left to toggle edit mode
+           =========================================== */
+        class InlineEditor {
+            constructor() {
+                this.isActive = false;
+                this.init();
+            }
+
+            init() {
+                // Create hotzone
+                const hotzone = document.createElement('div');
+                hotzone.className = 'edit-hotzone';
+                document.body.appendChild(hotzone);
+
+                // Create toggle button
+                const btn = document.createElement('button');
+                btn.className = 'edit-toggle';
+                btn.id = 'editToggle';
+                btn.title = '编辑模式 (E)';
+                btn.textContent = '✏️';
+                document.body.appendChild(btn);
+
+                // Create save button
+                const saveBtn = document.createElement('button');
+                saveBtn.className = 'save-btn';
+                saveBtn.id = 'saveBtn';
+                saveBtn.textContent = '💾 保存到本地';
+                document.body.appendChild(saveBtn);
+
+                // Hotzone hover with grace period
+                let hideTimeout = null;
+                hotzone.addEventListener('mouseenter', () => {
+                    clearTimeout(hideTimeout);
+                    btn.classList.add('show');
+                });
+                hotzone.addEventListener('mouseleave', () => {
+                    hideTimeout = setTimeout(() => {
+                        if (!this.isActive) btn.classList.remove('show');
+                    }, 400);
+                });
+                btn.addEventListener('mouseenter', () => clearTimeout(hideTimeout));
+                btn.addEventListener('mouseleave', () => {
+                    hideTimeout = setTimeout(() => {
+                        if (!this.isActive) btn.classList.remove('show');
+                    }, 400);
+                });
+
+                // Click handlers
+                btn.addEventListener('click', () => this.toggle());
+                hotzone.addEventListener('click', () => this.toggle());
+                saveBtn.addEventListener('click', () => this.saveFile());
+
+             // Keyboard shortcut
+                document.addEventListener('keydown', (e) => {
+                    if ((e.key === 'e' || e.key === 'E') && !e.target.getAttribute('contenteditable')) {
+                        this.toggle();
+                    }
+                    if (e.key === 's' && (e.metaKey || e.ctrlKey) && this.isActive) {
+                        e.preventDefault();
+                        this.saveFile();
+                    }
+                });
+
+                // Auto-save to localStorage
+                document.addEventListener('input', () => {
+                    if (this.isActive) {
+                        localStorage.setItem('guotong-presentation', document.documentElement.innerHTML);
+                    }
+                });
+
+                // Restore from localStorage
+                const saved = localStorage.getItem('guotong-presentation');
+                if (saved) {
+                    const restore = confirm('检测到未保存的编辑，是否恢复？');
+                    if (restore) document.documentElement.innerHTML = saved;
+                }
+            }
+
+            toggle() {
+                this.isActive = !this.isActive;
+                const btn = document.getElementById('editToggle');
+                const saveBtn = document.getElementById('saveBtn');
+                btn.classList.toggle('active', this.isActive);
+                saveBtn.classList.toggle('show', this.isActive);
+
+                const editables = document.querySelectorAll('h1, h2, h3, p, li, .org-label, .section-label, .speaker-info');
+                editables.forEach(el => {
+                    el.contentEditable = this.isActive;
+                    el.classList.toggle('editable', this.isActive);
+                });
+            }
+
+            saveFile() {
+                const html = '<!DOCTYPE html>\n<html lang="zh-CN">\n' + document.documentElement.innerHTML + '\n</html>';
+                const blob = new Blob([html], { type: 'text/html' });
+                const a = document.createElement('a');
+                a.href = URL.createObjectURL(blob);
+                a.download = 'presentation.html';
+                a.click();
+                URL.revokeObjectURL(a.href);
+                localStorage.removeItem('guotong-presentation');
+            }
+        }
+
+        new InlineEditor();
     </script>
+
+    <style>
+        .edit-hotzone {
+            position: fixed; top: 0; left: 0;
+            width: 80px; height: 80px;
+            z-index: 10000; cursor: pointer;
+        }
+        .edit-toggle {
+            position: fixed; top: 16px; left: 16px;
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            border: 1px solid var(--border-light);
+            background: white;
+            font-size: 18px;
+            cursor: pointer;
+            opacity: 0; pointer-events: none;
+            transition: opacity 0.3s ease;
+            z-index: 10001;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .edit-toggle.show, .edit-toggle.active {
+            opacity: 1; pointer-events: auto;
+        }
+        .edit-toggle.active {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+        .save-btn {
+            position: fixed; top: 16px; left: 66px;
+            padding: 8px 16px;
+            border-radius: 6px;
+            border: 1px solid var(--border-light);
+            background: white;
+            font-size: 13px;
+            font-family: var(--font-body);
+            cursor: pointer;
+            opacity: 0; pointer-events: none;
+            transition: opacity 0.3s ease;
+            z-index: 10001;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .save-btn.show {
+            opacity: 1; pointer-events: auto;
+        }
+        .editable {
+            outline: 1px dashed var(--accent) !important;
+            outline-offset: 2px;
+            cursor: text;
+        }
+        .editable:focus {
+            outline: 2px solid var(--accent) !important;
+            background: rgba(197,160,89,0.05);
+        }
+    </style>
 </body>
 </html>
