@@ -140,8 +140,9 @@ ul.feature-list li::before { content: '→'; position: absolute; left: 0; color:
 <!-- Slide 1: Cover -->
 <section class="slide dark" data-slide="0">
   <div class="cover-lobster">🦞</div>
-  <div class="slide-inner" style="text-align:center;">
-    <img src="images/openclaw-guide/mcdonalds-logo.png" alt="McDonald's" class="animate-in" style="height:clamp(40px,6vh,60px); width:auto; margin-bottom:clamp(0.5rem,1.5vh,1rem); opacity:0.9;">
+  <!-- McDonald's logo 背景装饰 -->
+  <img src="images/openclaw-guide/mcdonalds-logo.png" alt="" style="position:absolute; right:-5vw; top:50%; transform:translateY(-50%); height:90vh; width:auto; opacity:0.04; pointer-events:none; z-index:0;">
+  <div class="slide-inner" style="text-align:center; position:relative; z-index:1;">
     <div class="animate-in cover-badge">Experience Sharing</div>
     <h1 class="animate-in">龙虾养殖经验分享 <span class="accent">🦞</span></h1>
     <p class="subtitle animate-in">OpenClaw 从入门到实战</p>
