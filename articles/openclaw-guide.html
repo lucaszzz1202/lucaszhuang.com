@@ -28,6 +28,10 @@ body { font-family: 'Lora', 'Noto Serif SC', serif; background: var(--dark); col
 
 /* Progress Bar */
 #progress { position: fixed; top: 0; left: 0; height: 3px; background: var(--accent); width: 0%; z-index: 1000; transition: width 0.3s ease; }
+.fullscreen-btn { position: fixed; top: 16px; right: 16px; z-index: 1001; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); color: var(--text-secondary); width: 40px; height: 40px; border-radius: 10px; cursor: pointer; font-size: 18px; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; backdrop-filter: blur(8px); }
+.fullscreen-btn:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+.light .fullscreen-btn { background: rgba(0,0,0,0.05); border-color: rgba(0,0,0,0.1); color: var(--text-dark-secondary); }
+.light .fullscreen-btn:hover { background: var(--accent); color: #fff; }
 
 /* Nav Dots */
 #nav-dots { position: fixed; right: 24px; top: 50%; transform: translateY(-50%); z-index: 999; display: flex; flex-direction: column; gap: 12px; }
@@ -131,6 +135,7 @@ ul.feature-list li::before { content: '→'; position: absolute; left: 0; color:
 
 <div id="progress"></div>
 <nav id="nav-dots"></nav>
+<button class="fullscreen-btn" id="fullscreenBtn" title="全屏播放 (F)">⛶</button>
 
 <!-- Slide 1: Cover -->
 <section class="slide dark" data-slide="0">
@@ -653,7 +658,29 @@ ul.feature-list li::before { content: '→'; position: absolute; left: 0; color:
     } else if (e.key === 'End') {
       e.preventDefault();
       slides[totalSlides - 1].scrollIntoView({ behavior: 'smooth' });
+    } else if (e.key === 'f' || e.key === 'F') {
+      e.preventDefault();
+      toggleFullscreen();
     }
+  });
+
+  // Fullscreen
+  const fullscreenBtn = document.getElementById('fullscreenBtn');
+  function toggleFullscreen() {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch(() => {});
+      fullscreenBtn.textContent = '⛶';
+      fullscreenBtn.title = '退出全屏 (F)';
+    } else {
+      document.exitFullscreen();
+      fullscreenBtn.textContent = '⛶';
+      fullscreenBtn.title = '全屏播放 (F)';
+    }
+  }
+  fullscreenBtn.addEventListener('click', toggleFullscreen);
+  document.addEventListener('fullscreenchange', () => {
+    fullscreenBtn.textContent = document.fullscreenElement ? '✕' : '⛶';
+    fullscreenBtn.title = document.fullscreenElement ? '退出全屏 (F)' : '全屏播放 (F)';
   });
 
   // Touch swipe support
