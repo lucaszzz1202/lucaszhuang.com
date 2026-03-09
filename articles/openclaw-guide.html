@@ -563,18 +563,25 @@ ul.feature-list li::before { content: '→'; position: absolute; left: 0; color:
 
 <!-- Slide 16: 结尾 -->
 <section class="slide dark" data-slide="15">
-  <div class="slide-inner" style="text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:center;">
-    <div class="animate-in" style="font-size:clamp(3rem,8vw,6rem); margin-bottom:0.2em;">🦞</div>
-    <h1 class="animate-in" style="margin-bottom:0.3em;">开始养虾吧！</h1>
-    <div class="animate-in" style="font-size:clamp(1.2rem,2.5vw,1.8rem); font-family:'Poppins',sans-serif; font-weight:700; color:var(--accent); margin-bottom:clamp(0.8rem,2vh,1.5rem);">
-      Q & A
+  <div class="slide-inner" style="display:flex; align-items:center; justify-content:center; gap:clamp(2rem,6vw,6rem);">
+    <!-- 左侧文字 -->
+    <div style="text-align:left; flex:1; max-width:50%;">
+      <div class="animate-in" style="font-size:clamp(3rem,7vw,5rem); margin-bottom:0.2em;">🦞</div>
+      <h1 class="animate-in" style="margin-bottom:0.4em;">开始养虾吧！</h1>
+      <div class="animate-in" style="font-size:clamp(1.2rem,2.5vw,1.8rem); font-family:'Poppins',sans-serif; font-weight:700; color:var(--accent); margin-bottom:0.8em;">
+        Q & A
+      </div>
+      <p class="animate-in" style="color:var(--text-secondary); font-size:clamp(0.85rem,1.2vw,1rem); line-height:1.6;">
+        扫码交流 · 一起养虾<br>
+        <span style="opacity:0.6; font-size:0.9em;">Made with 🐾 by Luca</span>
+      </p>
     </div>
-    <div class="animate-in" style="background:white; border-radius:16px; padding:clamp(6px,1vw,12px); display:inline-block; box-shadow:0 4px 24px rgba(217,119,87,0.15);">
-      <img src="images/openclaw-guide/qrcode.jpg" alt="扫码交流" style="height:clamp(150px,28vh,280px); width:auto; border-radius:8px; display:block;">
+    <!-- 右侧二维码 -->
+    <div class="animate-in" style="flex-shrink:0;">
+      <div style="background:white; border-radius:20px; padding:clamp(10px,1.5vw,18px); box-shadow:0 8px 40px rgba(217,119,87,0.2);">
+        <img src="images/openclaw-guide/qrcode.jpg" alt="扫码交流" style="height:clamp(250px,45vh,420px); width:auto; border-radius:12px; display:block;">
+      </div>
     </div>
-    <p class="animate-in" style="margin-top:clamp(0.5rem,1.5vh,1rem); color:var(--text-secondary); font-size:clamp(0.75rem,1.1vw,0.95rem);">
-      扫码交流 · 一起养虾
-    </p>
   </div>
   <span class="watermark">Made by Luca 🐾</span>
   <span class="slide-num">16 / 16</span>
