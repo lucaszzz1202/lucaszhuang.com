@@ -127,6 +127,15 @@ ul.feature-list li::before { content: '→'; position: absolute; left: 0; color:
 /* Slide number */
 .slide-num { position: absolute; bottom: 20px; right: 30px; font-family: 'Poppins', sans-serif; font-size: 0.75rem; color: var(--text-secondary); opacity: 0.5; }
 .light .slide-num { color: var(--text-dark-secondary); }
+/* Image lightbox */
+.slide-img { cursor: zoom-in; transition: transform 0.3s ease; }
+.slide-img:hover { transform: scale(1.02); }
+.lightbox-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:2000; align-items:center; justify-content:center; cursor:zoom-out; backdrop-filter:blur(4px); }
+.lightbox-overlay.active { display:flex; }
+.lightbox-overlay img { max-width:92vw; max-height:92vh; border-radius:12px; box-shadow:0 8px 60px rgba(0,0,0,0.5); }
+.lightbox-close { position:fixed; top:20px; right:24px; z-index:2001; color:#fff; font-size:2rem; cursor:pointer; opacity:0.7; transition:opacity 0.2s; background:none; border:none; font-family:'Poppins',sans-serif; }
+.lightbox-close:hover { opacity:1; }
+
 .watermark { position: absolute; bottom: 20px; left: 30px; font-family: 'Poppins', sans-serif; font-size: 0.7rem; color: var(--text-secondary); opacity: 0.35; letter-spacing: 0.5px; }
 .light .watermark { color: var(--text-dark-secondary); }
 </style>
@@ -136,6 +145,7 @@ ul.feature-list li::before { content: '→'; position: absolute; left: 0; color:
 <div id="progress"></div>
 <nav id="nav-dots"></nav>
 <button class="fullscreen-btn" id="fullscreenBtn" title="全屏播放 (F)">⛶</button>
+<div class="lightbox-overlay" id="lightbox"><button class="lightbox-close" id="lightboxClose">✕</button><img id="lightboxImg" src="" alt=""></div>
 
 <!-- Slide 1: Cover -->
 <section class="slide dark" data-slide="0">
@@ -156,44 +166,47 @@ ul.feature-list li::before { content: '→'; position: absolute; left: 0; color:
 <section class="slide light" data-slide="1">
   <div class="slide-inner">
     <h2 class="animate-in">大纲 <span class="accent">📑</span></h2>
-    <div class="card-grid" style="grid-template-columns: 1fr 1fr; margin-top:1.5em;">
-      <div class="card animate-in" style="text-align:left;">
-        <h3 style="color:var(--accent); margin-bottom:0.8em;">🦞 认识龙虾</h3>
-        <ul class="feature-list">
+    <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:0.8em; margin-top:1.2em;">
+      <div class="card animate-in" style="text-align:left; padding:1em;">
+        <h3 style="color:var(--accent); font-size:clamp(0.85rem,1.3vw,1.1rem); margin-bottom:0.6em;">🦞 认识龙虾</h3>
+        <ul class="feature-list" style="font-size:clamp(0.75rem,1.1vw,0.9rem);">
           <li>什么是 OpenClaw</li>
           <li>一句话理解</li>
           <li>工作区结构</li>
         </ul>
       </div>
-      <div class="card animate-in" style="text-align:left;">
-        <h3 style="color:var(--accent); margin-bottom:0.8em;">✏️ 使用技巧</h3>
-        <ul class="feature-list">
-          <li>人格与规则（SOUL / AGENTS）</li>
-          <li>记忆体系（MEMORY / HEARTBEAT）</li>
-          <li>工具与配置（TOOLS / Skills）</li>
+      <div class="card animate-in" style="text-align:left; padding:1em;">
+        <h3 style="color:var(--accent); font-size:clamp(0.85rem,1.3vw,1.1rem); margin-bottom:0.6em;">✏️ 使用技巧</h3>
+        <ul class="feature-list" style="font-size:clamp(0.75rem,1.1vw,0.9rem);">
+          <li>人格与规则</li>
+          <li>记忆体系</li>
+          <li>工具与配置</li>
         </ul>
       </div>
-      <div class="card animate-in" style="text-align:left;">
-        <h3 style="color:var(--accent); margin-bottom:0.8em;">🔧 开始养虾</h3>
-        <ul class="feature-list">
-          <li>自我进化能力</li>
-          <li>安装方式 · 一键脚本详解</li>
-          <li>Skills & Hooks 配置</li>
-          <li>接入飞书详解 · 常用指令</li>
+      <div class="card animate-in" style="text-align:left; padding:1em;">
+        <h3 style="color:var(--accent); font-size:clamp(0.85rem,1.3vw,1.1rem); margin-bottom:0.6em;">🔧 开始养虾</h3>
+        <ul class="feature-list" style="font-size:clamp(0.75rem,1.1vw,0.9rem);">
+          <li>安装方式总览</li>
+          <li>一键脚本详解</li>
+          <li>Skills & Hooks</li>
+          <li>接入飞书</li>
         </ul>
       </div>
-      <div class="card animate-in" style="text-align:left;">
-        <h3 style="color:var(--accent); margin-bottom:0.8em;">🛡️ 安全意识</h3>
-        <ul class="feature-list">
-          <li>Skills 安全审计</li>
-          <li>防 Prompt Injection</li>
+      <div class="card animate-in" style="text-align:left; padding:1em;">
+        <h3 style="color:var(--accent); font-size:clamp(0.85rem,1.3vw,1.1rem); margin-bottom:0.6em;">🛡️ 安全意识</h3>
+        <ul class="feature-list" style="font-size:clamp(0.75rem,1.1vw,0.9rem);">
+          <li>Skills 安全</li>
+          <li>防 Injection</li>
           <li>模型选择</li>
+          <li>常用指令</li>
         </ul>
       </div>
-      <div class="card animate-in" style="text-align:left; grid-column: 1 / -1; max-width:50%; justify-self:center;">
-        <h3 style="color:var(--accent); margin-bottom:0.8em;">🚀 实战展示</h3>
-        <ul class="feature-list">
-          <li>做 PPT · 发小红书 · Cony AI PM</li>
+      <div class="card animate-in" style="text-align:left; padding:1em;">
+        <h3 style="color:var(--accent); font-size:clamp(0.85rem,1.3vw,1.1rem); margin-bottom:0.6em;">🚀 实战展示</h3>
+        <ul class="feature-list" style="font-size:clamp(0.75rem,1.1vw,0.9rem);">
+          <li>做 PPT</li>
+          <li>发小红书</li>
+          <li>Cony AI PM</li>
         </ul>
       </div>
     </div>
@@ -1132,6 +1145,26 @@ ul.feature-list li::before { content: '→'; position: absolute; left: 0; color:
     }
   }, { passive: true });
 
+})();
+
+// Lightbox
+(function() {
+  const overlay = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lightboxImg');
+  const lbClose = document.getElementById('lightboxClose');
+
+  document.addEventListener('click', (e) => {
+    if (e.target.classList.contains('slide-img') && e.target.tagName === 'IMG') {
+      lbImg.src = e.target.src;
+      overlay.classList.add('active');
+      e.stopPropagation();
+    }
+  });
+
+  function closeLightbox() { overlay.classList.remove('active'); lbImg.src = ''; }
+  overlay.addEventListener('click', closeLightbox);
+  lbClose.addEventListener('click', (e) => { e.stopPropagation(); closeLightbox(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
 })();
 </script>
 
