@@ -149,11 +149,61 @@ ul.feature-list li::before { content: '→'; position: absolute; left: 0; color:
     <p class="cover-author animate-in">Lucas &nbsp;·&nbsp; MCD IT &nbsp;·&nbsp; 2026.03.12</p>
   </div>
   <span class="watermark">Made by Luca 🐾</span>
-  <span class="slide-num">1 / 17</span>
+  <span class="slide-num">1 / 21</span>
 </section>
 
-<!-- Slide 2: 什么是 OpenClaw -->
+<!-- Slide 2: 大纲 -->
 <section class="slide light" data-slide="1">
+  <div class="slide-inner">
+    <h2 class="animate-in">大纲 <span class="accent">📑</span></h2>
+    <div class="card-grid" style="grid-template-columns: 1fr 1fr; margin-top:1.5em;">
+      <div class="card animate-in" style="text-align:left;">
+        <h3 style="color:var(--accent); margin-bottom:0.8em;">🦞 认识龙虾</h3>
+        <ul class="feature-list">
+          <li>什么是 OpenClaw</li>
+          <li>一句话理解</li>
+          <li>工作区结构</li>
+        </ul>
+      </div>
+      <div class="card animate-in" style="text-align:left;">
+        <h3 style="color:var(--accent); margin-bottom:0.8em;">✏️ 使用技巧</h3>
+        <ul class="feature-list">
+          <li>人格与规则（SOUL / AGENTS）</li>
+          <li>记忆体系（MEMORY / HEARTBEAT）</li>
+          <li>工具与配置（TOOLS / Skills）</li>
+        </ul>
+      </div>
+      <div class="card animate-in" style="text-align:left;">
+        <h3 style="color:var(--accent); margin-bottom:0.8em;">🔧 开始养虾</h3>
+        <ul class="feature-list">
+          <li>自我进化能力</li>
+          <li>安装方式总览</li>
+          <li>npm 安装 / Docker 部署</li>
+          <li>接入 Channel</li>
+        </ul>
+      </div>
+      <div class="card animate-in" style="text-align:left;">
+        <h3 style="color:var(--accent); margin-bottom:0.8em;">🛡️ 安全意识</h3>
+        <ul class="feature-list">
+          <li>Skills 系统与安全</li>
+          <li>防 Prompt Injection</li>
+          <li>模型选择</li>
+        </ul>
+      </div>
+      <div class="card animate-in" style="text-align:left; grid-column: 1 / -1; max-width:50%; justify-self:center;">
+        <h3 style="color:var(--accent); margin-bottom:0.8em;">🚀 实战展示</h3>
+        <ul class="feature-list">
+          <li>做 PPT · 发小红书 · Cony AI PM</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <span class="watermark">Made by Luca 🐾</span>
+  <span class="slide-num">2 / 21</span>
+</section>
+
+<!-- Slide 3: 什么是 OpenClaw -->
+<section class="slide light" data-slide="2">
   <div class="slide-inner">
     <h2 class="animate-in">什么是<span class="accent">龙虾</span> 🦞</h2>
     <p class="animate-in" style="margin-bottom:1em;">一个开源、自托管的 <strong>AI Agent 系统</strong>，让 AI 从「聊天工具」变成「能自主执行任务的数字员工」。</p>
@@ -173,11 +223,11 @@ ul.feature-list li::before { content: '→'; position: absolute; left: 0; color:
     <div class="highlight-box animate-in">连接 <strong>20+</strong> 消息渠道（飞书、Discord、Telegram、微信…），7×24 主动执行任务</div>
   </div>
   <span class="watermark">Made by Luca 🐾</span>
-  <span class="slide-num">2 / 17</span>
+  <span class="slide-num">3 / 21</span>
 </section>
 
 <!-- Slide 3: 一句话理解 -->
-<section class="slide dark" data-slide="2">
+<section class="slide dark" data-slide="3">
   <div class="slide-inner" style="text-align:center;">
     <h2 class="animate-in">一句话理解</h2>
     <p class="animate-in" style="font-size:clamp(1.3rem,2.5vw,2rem); margin-bottom:1.5em; line-height:1.5;">
@@ -191,11 +241,11 @@ ul.feature-list li::before { content: '→'; position: absolute; left: 0; color:
     </div>
   </div>
   <span class="watermark">Made by Luca 🐾</span>
-  <span class="slide-num">3 / 17</span>
+  <span class="slide-num">4 / 21</span>
 </section>
 
 <!-- Slide 4: 工作区结构 -->
-<section class="slide light" data-slide="3">
+<section class="slide light" data-slide="4">
   <div class="slide-inner">
     <h2 class="animate-in">工作区结构</h2>
     <p class="animate-in" style="margin-bottom:1em;">所有配置以<strong>纯文本文件</strong>形式存在 — 可读、可版本控制、可 AI 理解</p>
@@ -214,11 +264,110 @@ ul.feature-list li::before { content: '→'; position: absolute; left: 0; color:
     <div class="highlight-box animate-in">💡 纯 Markdown 文件 = 人类可读 + AI 可理解 + Git 可追踪</div>
   </div>
   <span class="watermark">Made by Luca 🐾</span>
-  <span class="slide-num">4 / 17</span>
+  <span class="slide-num">5 / 21</span>
 </section>
 
-<!-- Slide 5: 自我进化 -->
-<section class="slide dark" data-slide="4">
+<!-- Slide 5: 人格与规则 — SOUL.md + AGENTS.md -->
+<section class="slide dark" data-slide="5">
+  <div class="slide-inner">
+    <h2 class="animate-in">人格与规则 <span class="accent">🧬</span></h2>
+    <p class="animate-in subtitle" style="margin-bottom:1.2em;">SOUL.md 定义「它是谁」，AGENTS.md 定义「它怎么做事」</p>
+    <div class="two-col">
+      <div class="card animate-in" style="text-align:left;">
+        <span class="card-icon">👻</span>
+        <h3>SOUL.md — 人格内核</h3>
+        <ul class="feature-list">
+          <li>定义语气、性格、边界</li>
+          <li>写群聊安全规则（防 injection）</li>
+          <li>区分主人 ID vs 其他人权限</li>
+          <li>Agent 可以自己修改，但会通知你</li>
+        </ul>
+        <div class="highlight-box" style="margin-top:0.8em;">💡 越具体越好 — "幽默毒舌中文交流" 比 "友好" 有效 10 倍</div>
+      </div>
+      <div class="card animate-in" style="text-align:left;">
+        <span class="card-icon">📋</span>
+        <h3>AGENTS.md — 行为手册</h3>
+        <ul class="feature-list">
+          <li>每个会话开始时自动加载</li>
+          <li>定义记忆读写规则</li>
+          <li>设置群聊发言策略</li>
+          <li>配置心跳检查清单</li>
+        </ul>
+        <div class="highlight-box" style="margin-top:0.8em;">💡 把它当「员工手册」— 新 session 醒来第一件事就是读它</div>
+      </div>
+    </div>
+  </div>
+  <span class="watermark">Made by Luca 🐾</span>
+  <span class="slide-num">6 / 21</span>
+</section>
+
+<!-- Slide 6: 记忆体系 — MEMORY.md + HEARTBEAT.md -->
+<section class="slide light" data-slide="6">
+  <div class="slide-inner">
+    <h2 class="animate-in">记忆体系 <span class="accent">🧠</span></h2>
+    <p class="animate-in subtitle" style="margin-bottom:1.2em;">Agent 每次醒来都是失忆的 — 这些文件就是它的记忆</p>
+    <div class="card-grid" style="grid-template-columns: 1fr 1fr 1fr;">
+      <div class="card animate-in" style="text-align:left;">
+        <span class="card-icon">📝</span>
+        <h3>memory/日记</h3>
+        <p>每日一个文件，记录当天发生的事。会话开始时读今天+昨天。</p>
+        <div class="tag" style="margin-top:0.5em;">短期记忆</div>
+      </div>
+      <div class="card animate-in" style="text-align:left;">
+        <span class="card-icon">💎</span>
+        <h3>MEMORY.md</h3>
+        <p>精华沉淀，跨会话持久化。仅主人私聊加载，群聊不加载（防泄露）。</p>
+        <div class="tag" style="margin-top:0.5em;">长期记忆</div>
+      </div>
+      <div class="card animate-in" style="text-align:left;">
+        <span class="card-icon">💓</span>
+        <h3>HEARTBEAT.md</h3>
+        <p>定时心跳任务清单。巡检邮件、日历、日记整理、记忆沉淀。</p>
+        <div class="tag" style="margin-top:0.5em;">主动检查</div>
+      </div>
+    </div>
+    <div class="highlight-box animate-in" style="margin-top:1em;">
+      🔑 关键技巧：<strong>有人说"记住这个"→ 立刻写文件</strong>，不要只存在上下文里。上下文会被压缩，文件不会丢。<br>
+      开启向量搜索（memory_search）后，记忆可以被语义检索，不用精确匹配关键词。
+    </div>
+  </div>
+  <span class="watermark">Made by Luca 🐾</span>
+  <span class="slide-num">7 / 21</span>
+</section>
+
+<!-- Slide 7: 工具与配置 — TOOLS.md + skills/ + config/ -->
+<section class="slide dark" data-slide="7">
+  <div class="slide-inner">
+    <h2 class="animate-in">工具与配置 <span class="accent">🔧</span></h2>
+    <p class="animate-in subtitle" style="margin-bottom:1.2em;">TOOLS.md 是备忘录，skills/ 是能力，config/ 是连接</p>
+    <div class="card-grid">
+      <div class="card animate-in" style="text-align:left;">
+        <span class="card-icon">🗒️</span>
+        <h3>TOOLS.md</h3>
+        <p>记录本地工具的使用笔记：CLI 路径、代理配置、已知坑。<strong>不控制工具可用性</strong>，纯粹是给 Agent 看的备忘。</p>
+      </div>
+      <div class="card animate-in" style="text-align:left;">
+        <span class="card-icon">🧩</span>
+        <h3>skills/</h3>
+        <p>工作区级 Skill 目录。同名时<strong>覆盖</strong>全局 Skill。每个 Skill 一个文件夹，核心是 SKILL.md。</p>
+      </div>
+      <div class="card animate-in" style="text-align:left;">
+        <span class="card-icon">⚙️</span>
+        <h3>config/</h3>
+        <p>MCP 服务器配置等。如 mcporter.json 定义外部工具连接（Confluence、Cme DevTools…）。</p>
+      </div>
+    </div>
+    <div class="highlight-box animate-in" style="margin-top:1em;">
+      💡 整个工作区建议用 <strong>Git 私有仓库</strong>备份 — 纯文本文件天然适合版本控制。<br>
+      ⚠️ 不要提交密钥！API Key 放 <code>~/.openclaw/credentials/</code> 或环境变量。
+    </div>
+  </div>
+  <span class="watermark">Made by Luca 🐾</span>
+  <span class="slide-num">8 / 21</span>
+</section>
+
+<!-- Slide 8: 自我进化 -->
+<section class="slide dark" data-slide="8">
   <div class="slide-inner">
     <h2 class="animate-in">自我进化能力 <span class="accent">🧬</span></h2>
     <p class="animate-in" style="margin-bottom:1.2em;">OpenClaw 可以在运行时<strong>写、重载、测试</strong>自己的扩展</p>
@@ -247,11 +396,11 @@ ul.feature-list li::before { content: '→'; position: absolute; left: 0; color:
     <div class="highlight-box animate-in">不是「等人喂」，而是「自己觅食」— 遇到问题先搜 ClawHub，找不到就自己写</div>
   </div>
   <span class="watermark">Made by Luca 🐾</span>
-  <span class="slide-num">5 / 17</span>
+  <span class="slide-num">9 / 21</span>
 </section>
 
 <!-- Slide 6: 安装方式总览 -->
-<section class="slide light" data-slide="5">
+<section class="slide light" data-slide="9">
   <div class="slide-inner" style="text-align:center;">
     <h2 class="animate-in">安装方式总览</h2>
     <p class="animate-in subtitle" style="margin-bottom:1.5em;">选择最适合你的方式开始养虾</p>
@@ -279,11 +428,11 @@ ul.feature-list li::before { content: '→'; position: absolute; left: 0; color:
     </div>
   </div>
   <span class="watermark">Made by Luca 🐾</span>
-  <span class="slide-num">6 / 17</span>
+  <span class="slide-num">10 / 21</span>
 </section>
 
 <!-- Slide 7: npm 安装详解 -->
-<section class="slide dark" data-slide="6">
+<section class="slide dark" data-slide="10">
   <div class="slide-inner">
     <h2 class="animate-in">npm 安装详解 <span class="accent">📦</span></h2>
     <p class="animate-in" style="margin-bottom:1.2em;">三步完成，五分钟上手</p>
@@ -303,11 +452,11 @@ ul.feature-list li::before { content: '→'; position: absolute; left: 0; color:
     </div>
   </div>
   <span class="watermark">Made by Luca 🐾</span>
-  <span class="slide-num">7 / 17</span>
+  <span class="slide-num">11 / 21</span>
 </section>
 
 <!-- Slide 8: Docker 部署 -->
-<section class="slide light" data-slide="7">
+<section class="slide light" data-slide="11">
   <div class="slide-inner">
     <h2 class="animate-in">Docker 部署 <span class="accent">🐳</span></h2>
     <div class="code-block animate-in" style="margin-bottom:1em;">
@@ -330,11 +479,11 @@ ul.feature-list li::before { content: '→'; position: absolute; left: 0; color:
     </div>
   </div>
   <span class="watermark">Made by Luca 🐾</span>
-  <span class="slide-num">8 / 17</span>
+  <span class="slide-num">12 / 21</span>
 </section>
 
 <!-- Slide 9: 接入 Channel -->
-<section class="slide dark" data-slide="8">
+<section class="slide dark" data-slide="12">
   <div class="slide-inner">
     <h2 class="animate-in">接入 Channel <span class="accent">💬</span></h2>
     <p class="animate-in" style="margin-bottom:1.2em;">OpenClaw 支持 <strong>20+</strong> 消息平台，选一个你最常用的开始</p>
@@ -362,11 +511,11 @@ ul.feature-list li::before { content: '→'; position: absolute; left: 0; color:
     </div>
   </div>
   <span class="watermark">Made by Luca 🐾</span>
-  <span class="slide-num">9 / 17</span>
+  <span class="slide-num">13 / 21</span>
 </section>
 
 <!-- Slide 10: Skills 系统 -->
-<section class="slide light" data-slide="9">
+<section class="slide light" data-slide="13">
   <div class="slide-inner">
     <h2 class="animate-in">Skills 系统 <span class="accent">🧩</span></h2>
     <p class="animate-in" style="margin-bottom:1em;">通过 <strong>ClawHub 技能市场</strong>，一行命令安装新能力</p>
@@ -381,11 +530,11 @@ ul.feature-list li::before { content: '→'; position: absolute; left: 0; color:
     </div>
   </div>
   <span class="watermark">Made by Luca 🐾</span>
-  <span class="slide-num">10 / 17</span>
+  <span class="slide-num">14 / 21</span>
 </section>
 
 <!-- Slide 11: Skills 安全 -->
-<section class="slide dark" data-slide="10">
+<section class="slide dark" data-slide="14">
   <div class="slide-inner">
     <h2 class="animate-in">Skills 安全 <span class="accent">🛡️</span></h2>
     <p class="animate-in" style="margin-bottom:1.2em;">安装前必须扫描 — 用 <strong>SecureClaw</strong> 审计技能安全性</p>
@@ -418,11 +567,11 @@ ul.feature-list li::before { content: '→'; position: absolute; left: 0; color:
     </div>
   </div>
   <span class="watermark">Made by Luca 🐾</span>
-  <span class="slide-num">11 / 17</span>
+  <span class="slide-num">15 / 21</span>
 </section>
 
 <!-- Slide 12: 防 Prompt Injection -->
-<section class="slide dark" data-slide="11">
+<section class="slide dark" data-slide="15">
   <div class="slide-inner">
     <h2 class="animate-in">防 Prompt Injection <span class="accent">🛡️</span></h2>
     <p class="animate-in subtitle" style="margin-bottom:1.2em;">群聊是不可信环境 — 任何人都可能尝试劫持你的 Agent</p>
@@ -447,11 +596,11 @@ ul.feature-list li::before { content: '→'; position: absolute; left: 0; color:
     </div>
   </div>
   <span class="watermark">Made by Luca 🐾</span>
-  <span class="slide-num">12 / 17</span>
+  <span class="slide-num">16 / 21</span>
 </section>
 
 <!-- Slide 13: 模型选择 -->
-<section class="slide light" data-slide="12">
+<section class="slide light" data-slide="16">
   <div class="slide-inner" style="text-align:center;">
     <h2 class="animate-in">模型选择 <span class="accent">🧠</span></h2>
     <p class="animate-in subtitle" style="margin-bottom:1.5em;">根据你的技术能力选择合适的方案</p>
@@ -479,11 +628,11 @@ ul.feature-list li::before { content: '→'; position: absolute; left: 0; color:
     </div>
   </div>
   <span class="watermark">Made by Luca 🐾</span>
-  <span class="slide-num">13 / 17</span>
+  <span class="slide-num">17 / 21</span>
 </section>
 
 <!-- Slide 13: 实战 - 做 PPT -->
-<section class="slide dark" data-slide="13">
+<section class="slide dark" data-slide="17">
   <div class="slide-inner">
     <h2 class="animate-in">实战展示 — 做 PPT <span class="accent">🎨</span></h2>
     <div class="two-col">
@@ -515,11 +664,11 @@ ul.feature-list li::before { content: '→'; position: absolute; left: 0; color:
     </div>
   </div>
   <span class="watermark">Made by Luca 🐾</span>
-  <span class="slide-num">14 / 17</span>
+  <span class="slide-num">18 / 21</span>
 </section>
 
 <!-- Slide 14: 实战 - 发小红书 -->
-<section class="slide light" data-slide="14">
+<section class="slide light" data-slide="18">
   <div class="slide-inner">
     <h2 class="animate-in">实战展示 — 发小红书 <span class="accent">📱</span></h2>
     <p class="animate-in" style="margin-bottom:1.2em;">通过 <strong>Chrome DevTools MCP</strong> 操控已登录的 Chrome 浏览器</p>
@@ -550,11 +699,11 @@ ul.feature-list li::before { content: '→'; position: absolute; left: 0; color:
     </div>
   </div>
   <span class="watermark">Made by Luca 🐾</span>
-  <span class="slide-num">15 / 17</span>
+  <span class="slide-num">19 / 21</span>
 </section>
 
 <!-- Slide 15: 实战 - Cony AI PM -->
-<section class="slide dark" data-slide="15">
+<section class="slide dark" data-slide="19">
   <div class="slide-inner">
     <h2 class="animate-in">实战展示 — Cony AI PM <span class="accent">📋</span></h2>
     <p class="animate-in" style="margin-bottom:1.2em;">交互式问卷，帮你从模糊 idea 精炼为专业 PRD</p>
@@ -594,11 +743,11 @@ ul.feature-list li::before { content: '→'; position: absolute; left: 0; color:
     </div>
   </div>
   <span class="watermark">Made by Luca 🐾</span>
-  <span class="slide-num">16 / 17</span>
+  <span class="slide-num">20 / 21</span>
 </section>
 
 <!-- Slide 16: 结尾 -->
-<section class="slide dark" data-slide="16">
+<section class="slide dark" data-slide="20">
   <div class="slide-inner" style="display:flex; align-items:center; justify-content:center; gap:clamp(2rem,5vw,5rem);">
     <!-- 左侧文字 -->
     <div style="text-align:left; flex:1;">
@@ -620,7 +769,7 @@ ul.feature-list li::before { content: '→'; position: absolute; left: 0; color:
     </div>
   </div>
   <span class="watermark">Made by Luca 🐾</span>
-  <span class="slide-num">17 / 17</span>
+  <span class="slide-num">21 / 21</span>
 </section>
 
 <script>
