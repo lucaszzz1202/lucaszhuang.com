@@ -1113,8 +1113,8 @@ ul.feature-list li::before { content: '→'; position: absolute; left: 0; color:
         const animItems = entry.target.querySelectorAll('.animate-in');
         animItems.forEach(el => el.classList.add('visible'));
 
-        // Update current slide
-        const idx = parseInt(entry.target.dataset.slide);
+        // Update current slide (use DOM index, not data-slide attribute)
+        const idx = Array.from(slides).indexOf(entry.target);
         currentSlide = idx;
 
         // Update progress bar
@@ -1125,7 +1125,7 @@ ul.feature-list li::before { content: '→'; position: absolute; left: 0; color:
         dots.forEach((d, i) => d.classList.toggle('active', i === idx));
       }
     });
-  }, { threshold: 0.5 });
+  }, { threshold: 0.3 });
 
   slides.forEach(s => observer.observe(s));
 
